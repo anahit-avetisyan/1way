@@ -1,0 +1,19 @@
+@font-face {
+    font-family: currency;
+    src: url("ArialArm-Currency.ttf");
+}
+
+@font-face {
+    font-family: percent;
+    src: url("Arial San Light.ttf");
+}
+
+@font-face {
+    font-family: Arial-Arm-Regular;
+    src: url("Arial-Arm-Regular.ttf");
+}
+
+@font-face {
+    font-family: arialarmmedium;
+    src: url("arialarmmedium.ttf");
+}
