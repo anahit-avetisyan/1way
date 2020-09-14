@@ -92,7 +92,7 @@
                                             <option value="Տարիք">Տարիք</option>
                                             <option class="etc">Այլ․․․</option>
                                         </select>
-                                        <input id="fvefrbve" type="text" name="size[]" placeholder="բլա բլա բլա">
+                                        <input id="fvefrbve" type="text" name="size[]" class="product-size" placeholder=" ">
                                         <span class="categoryAdd" style="cursor: pointer;background-color: green;padding: 4px 10px;color: white;font-weight: bold;font-size: 17px;border-radius: 8px;">+</span>
                                         <span class="categoryRemove" style="cursor: pointer;background-color: red;padding: 4px 10px;color: white;font-weight: bold;font-size: 17px;border-radius: 8px;">-</span>
                                     </div>
@@ -101,29 +101,29 @@
                                 <div class="form-group" style="border-bottom:1px solid black">
                                     <label for="inputDescription">Գույներ</label>
                                     <br />
-                                    <label for="1"><input id='1' type="checkbox" name="color[]" value="red" /><div style="background-color:red ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="2"><input id='2' type="checkbox" name="color[]" value="orange" /><div style="background-color:orange ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="3"><input id='3' type="checkbox" name="color[]" value="yellow" /><div style="background-color:yellow ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="4"><input id='4' type="checkbox" name="color[]" value="white" /><div style="background-color:white ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="5"><input id='5' type="checkbox" name="color[]" value="mistyrose" /> <div style="background-color:mistyrose ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="6"><input id='6' type="checkbox" name="color[]" value="lightcyan" /><div style="background-color:lightcyan;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="7"><input id='7' type="checkbox" name="color[]" value="pink" /><div style="background-color:pink ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="8"><input id='8' type="checkbox" name="color[]" value="darkgray" /><div style="background-color:darkgray ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="9"><input id='9' type="checkbox" name="color[]" value="aqua" /><div style="background-color:aqua;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="10"><input id='10' type="checkbox" name="color[]" value="blue" /><div style="background-color:blue ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="11"><input id='11' type="checkbox" name="color[]" value="firebrick" /><div style="background-color:firebrick ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="12"><input id='12' type="checkbox" name="color[]" value="seagreen" /><div style="background-color:seagreen ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="13"><input id='13' type="checkbox" name="color[]" value="blueviolet" /><div style="background-color:blueviolet ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="14"><input id='14' type="checkbox" name="color[]" value="black" /><div style="background-color:black ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="15"><input id='15' type="checkbox" name="color[]" value="darkolivegreen" /><div style="background-color:darkolivegreen ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="16"><input id='16' type="checkbox" name="color[]" value="darkgreen" /><div style="background-color:darkgreen ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="17"><input id='17' type="checkbox" name="color[]" value="forestgreen" /><div style="background-color:forestgreen ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="18"><input id='18' type="checkbox" name="color[]" value="midnightblue" /><div style="background-color:midnightblue ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="19"><input id='19' type="checkbox" name="color[]" value="indigo" /><div style="background-color:indigo	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="20"><input id='20' type="checkbox" name="color[]" value="plum" /><div style="background-color:plum	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="21"><input id='21' type="checkbox" name="color[]" value="seagreen" /><div style="background-color:seagreen	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="22"><input id='22' type="checkbox" name="color[]" value="aquamarine" /><div style="background-color:aquamarine	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
-                                    <label for="23"><input id='23' type="checkbox" name="color[]" value="seashell" /><div style="background-color:seashell	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="1"><input id='1' class="product-color" type="checkbox" name="color[]" value="red" /><div style="background-color:red ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="2"><input id='2' class="product-color" type="checkbox" name="color[]" value="orange" /><div style="background-color:orange ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="3"><input id='3' class="product-color" type="checkbox" name="color[]" value="yellow" /><div style="background-color:yellow ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="4"><input id='4' class="product-color" type="checkbox" name="color[]" value="white" /><div style="background-color:white ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="5"><input id='5' class="product-color" type="checkbox" name="color[]" value="mistyrose" /> <div style="background-color:mistyrose ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="6"><input id='6' class="product-color" type="checkbox" name="color[]" value="lightcyan" /><div style="background-color:lightcyan;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="7"><input id='7' class="product-color" type="checkbox" name="color[]" value="pink" /><div style="background-color:pink ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="8"><input id='8' class="product-color" type="checkbox" name="color[]" value="darkgray" /><div style="background-color:darkgray ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="9"><input id='9' class="product-color" type="checkbox" name="color[]" value="aqua" /><div style="background-color:aqua;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="10"><input id='10' class="product-color" type="checkbox" name="color[]" value="blue" /><div style="background-color:blue ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="11"><input id='11' class="product-color"type="checkbox" name="color[]" value="firebrick" /><div style="background-color:firebrick ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="12"><input id='12' class="product-color" type="checkbox" name="color[]" value="seagreen" /><div style="background-color:seagreen ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="13"><input id='13' class="product-color"type="checkbox" name="color[]" value="blueviolet" /><div style="background-color:blueviolet ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="14"><input id='14' class="product-color"type="checkbox" name="color[]" value="black" /><div style="background-color:black ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="15"><input id='15' class="product-color" type="checkbox" name="color[]" value="darkolivegreen" /><div style="background-color:darkolivegreen ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="16"><input id='16' class="product-color" type="checkbox" name="color[]" value="darkgreen" /><div style="background-color:darkgreen ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="17"><input id='17' class="product-color" type="checkbox" name="color[]" value="forestgreen" /><div style="background-color:forestgreen ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="18"><input id='18' class="product-color" type="checkbox" name="color[]" value="midnightblue" /><div style="background-color:midnightblue ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="19"><input id='19' class="product-color" type="checkbox" name="color[]" value="indigo" /><div style="background-color:indigo	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="20"><input id='20' class="product-color" type="checkbox" name="color[]" value="plum" /><div style="background-color:plum	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="21"><input id='21' class="product-color" type="checkbox" name="color[]" value="seagreen" /><div style="background-color:seagreen	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="22"><input id='22' class="product-color" type="checkbox" name="color[]" value="aquamarine" /><div style="background-color:aquamarine	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
+                                    <label for="23"><input id='23' class="product-color" type="checkbox" name="color[]" value="seashell" /><div style="background-color:seashell	 ;width: 30px;height: 30px;margin-right: 8px;border:1px solid black"></div></label>
                                     <br>
                                 </div>
 
@@ -146,13 +146,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputProjectLeader">Նկարը</label>
+                                    <div class="img-container">
+
+                                    </div>
                                     <input name="posters[]" type="file" class="form-control filestyle" data-buttonName="btn-primary"
                                            id="product-posters" multiple>
                                     <span class="fileError"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Band</label>
-                                    <select name="brend_id" class="form-control brand" id="category_id">
+                                    <select name="brend_id"   class="form-control brand product-brend" id="category_id">
                                         <option selected disabled>Band</option>
                                         <span class="brandError"></span>
                                         @isset($brand)
@@ -162,10 +165,10 @@
                                         @endisset
                                     </select>
                                 </div>
-                                {{--                            {{dd($category)}}--}}
+
                                 <div class="form-group">
                                     <label for="inputStatus">Կատեգորիան</label>
-                                    <select name="category_id" class="form-control" id="category">
+                                    <select name="category_id"   class="form-control product-category" id="category">
                                         <option selected disabled>Կատեգորիան</option>
                                         @isset($category)
                                             @foreach($category as $categories)
@@ -176,7 +179,7 @@
                                 </div>
                                 <div class="form-group">
 
-                                    <select name="subcategory_id" id="subcategory" class="form-control input-sm">
+                                    <select name="subcategory_id" id="subcategory"    class="form-control input-sm product-subcategory">
                                         <option selected disabled>Կատեգորիան</option>
                                         <option value=""></option>
                                     </select>
@@ -204,7 +207,75 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('select[name="category_id"]').on("change",function () {
+        var href = window.location.href
+        var indexofSearch = href.indexOf('product/')
+        var id = href.substring(indexofSearch+8)
+         id = id.replace('/edit?','')
+
+        $.ajax({
+            url:'/product-data/'+id,
+            type:"GET",
+            dataType: "json",
+            success:function (data) {
+                // console.log(data);
+                if(data.success){
+                    console.log(data.product.titleAM,'ssss',data)
+
+
+                    $('.product-brend').val(data.product.brend_id )
+                    $('.product-category').val(data.product.category_id)
+                    if(data.product.category_id){
+                        $.ajax({
+                            url:'/ajax/'+data.product.category_id,
+                            type:"GET",
+                            dataType: "json",
+                            success:function (data) {
+                                // console.log(data);
+                                $('select[name="subcategory_id"]').empty();
+                                $.each(data,function (key,value) {
+                                    $('select[name="subcategory_id"]').append
+                                    ('<option value="'+key+'">'+value+'</option>');
+                                })
+                            }
+                        })
+                    }
+                    $('.product-subcategory').val(data.product.subcategory_id)
+                    var imgs = JSON.parse(data.product.posters)
+                    $(".img-container").empty()
+                    if(imgs.length>0){
+                        var img = ""
+                        imgs.map(function (img) {
+                            var imgSrc = "/images/"+img
+                            var imgTag =`<img src=${imgSrc}  width=\"60\" class=\"img-product\">`
+                            $(".img-container").append(imgTag)
+                        })
+
+                    }
+
+                    if(data.product.size.length>0){
+                        $('.product-size').val(data.product.size[0])
+                    }
+                    if(data.product.color.length>0){
+                        var colors = data.product.color
+                        if(colors.length>0){
+                            var checkbox = $(".product-color")
+
+                            for(var i = 0; i < checkbox.length; i++){
+                                console.log($(checkbox[i]).val());
+                                if(colors.includes($(checkbox[i]).val())){
+                                    $(checkbox[i]).prop("checked", true);
+                                }
+                            }
+
+
+                        }
+                    }
+
+                }
+
+            }
+        })
+        $('.product-category').on("change",function () {
             var category_id = $(this).val();
             if(category_id){
                 $.ajax({

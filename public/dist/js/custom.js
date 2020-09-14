@@ -55,24 +55,24 @@ $(document).ready(function(){
                         })
 
                     }
-                    // console.log(data.product.color.length,"ssjsj")
-                    // if(data.product.color.length>5){
-                    //     var colors =JSON.parse(data.product.color)
-                    //
-                    //
-                    //     if(colors.length>0){
-                    //         var checkbox = $(".product-color")
-                    //
-                    //         for(var i = 0; i < checkbox.length; i++){
-                    //             console.log($(checkbox[i]).val());
-                    //             if(colors.includes($(checkbox[i]).val())){
-                    //                 $(checkbox[i]).prop("checked", true);
-                    //             }
-                    //         }
-                    //
-                    //
-                    //     }
-                    // }
+                    console.log(data.product.color.length,"ssjsj")
+                    if(data.product.color.length>0){
+                        var colors = data.product.color
+
+
+                        if(colors.length>0){
+                            var checkbox = $(".product-color")
+
+                            for(var i = 0; i < checkbox.length; i++){
+                                console.log($(checkbox[i]).val());
+                                if(colors.includes($(checkbox[i]).val())){
+                                    $(checkbox[i]).prop("checked", true);
+                                }
+                            }
+
+
+                        }
+                    }
                     $('#myModal').modal('show')
                 }
 

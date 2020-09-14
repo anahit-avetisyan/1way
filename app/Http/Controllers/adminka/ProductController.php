@@ -50,6 +50,13 @@ class ProductController extends Controller
     public function productData(Request $request,$id)
     {
         $product = Product::with('getSubCategory','category','brend')->where('id',$id)->first()->toArray();
+
+        if(!is_null($product['size'])){
+            $product['size'] =  unserialize($product['size']);
+        }
+        if(!is_null($product['color'])){
+            $product['color'] =  unserialize($product['color']);
+        }
         return response()->json([
             'product' => $product,
             'success' => true
@@ -139,8 +146,15 @@ class ProductController extends Controller
     {
         $category = Category::get();
         $brand = Brend::all();
-        $product = Product::find($id);
         $subcategory = SubCategory::all();
+        $product = Product::with('getSubCategory','category','brend')->where('id',$id)->first();
+
+        if(!is_null($product->size)){
+            $product->size =  unserialize($product->size);
+        }
+        if(!is_null($product->color)){
+            $product->color =  unserialize($product->color);
+        }
         return view('admin.product-edit',compact('product','subcategory','brand',"category")
         );
       }
@@ -163,6 +177,13 @@ class ProductController extends Controller
                 $file->move(public_path() . '/images/',$imgName);
             }
             $files['posters']= json_encode($img);
+        }
+
+        if(isset($files['size']) && count($files['size'])>0){
+            $files['size'] =  serialize($files['size']);
+        }
+        if(isset($files['color']) && count($files['color'])>0){
+            $files['color'] =  serialize($files['color']);
         }
         $prod = Product::find($id);
         $prod->update($files);

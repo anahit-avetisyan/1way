@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Անվանումը</label>
-                                <input name="titleAM"  id="title" type="number" class="form-control">
+                                <input name="titleAM"  id="title" type="text"  class="form-control">
                                 <span class="AMerror" style="color: red"></span>
                             </div>
                                 <div class="form-group">
