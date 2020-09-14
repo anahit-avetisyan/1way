@@ -219,7 +219,7 @@
             success:function (data) {
                 // console.log(data);
                 if(data.success){
-                    console.log(data.product.titleAM,'ssss',data)
+
 
 
                     $('.product-brend').val(data.product.brend_id )
@@ -252,10 +252,10 @@
 
                     }
 
-                    if(data.product.size.length>0){
+                    if(data.product.size && data.product.size.length>0){
                         $('.product-size').val(data.product.size[0])
                     }
-                    if(data.product.color.length>0){
+                    if(data.product.color && data.product.color.length>0){
                         var colors = data.product.color
                         if(colors.length>0){
                             var checkbox = $(".product-color")

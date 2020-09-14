@@ -94,8 +94,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
-            $input= $request->all();
+        $input= $request->all();
+
+        if(!isset($input['availability'])||!isset($input['category_id'])||!isset($input['subcategory_id'])||!isset($input['titleAM'])||!isset($input['quantity'])||!isset($input['sizeName'])||!isset($input['descriptionAM'])||!isset($input['priceAM'])||!isset($input['priceRU'])||!isset($input['priceEN'])){
+            $category = Category::get();
+            $brand = Brend::all();
+            $subcategory = SubCategory::get();
+
+            return redirect()->route('product.index')->with(session()->flash('alert-danger', 'Ապրանքը Ավելացված չէ,ոչ բոլոր պարտադիր դաշտերն են լրացված'));
+        }
+
             $input['size'] = serialize($request->size);
             $input['sizeName'] = $request->sizeName;
             $input['brend_id'] = $request->brend_id;
@@ -170,7 +178,10 @@ class ProductController extends Controller
     {
         $files = $request->except('_token','_method');
         $img = [];
+        $product = Product::where('id',$id)->first();
+
         if(isset($files['posters'])){
+            $img =  json_decode($product->posters, true);
             foreach ($files['posters'] as $file){
                 $imgName = rand(1,20). $file->getClientOriginalName();
                 array_push($img,$imgName);

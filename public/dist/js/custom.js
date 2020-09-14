@@ -55,8 +55,8 @@ $(document).ready(function(){
                         })
 
                     }
-                    console.log(data.product.color.length,"ssjsj")
-                    if(data.product.color.length>0){
+
+                    if(data.product.color && data.product.color.length>0){
                         var colors = data.product.color
 
 
