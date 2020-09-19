@@ -6,12 +6,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Brand</h1>
+                        <h1>Ապրանքանիշ</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Գլխավոր</a></li>
-                            <li class="breadcrumb-item active">Brand</li>
+                            <li class="breadcrumb-item active">Ապրանքանիշ</li>
                         </ol>
                     </div>
                 </div>
@@ -40,16 +40,16 @@
                                             #
                                         </th>
                                         <th style="width: 8%">
-                                            Անվանումը
+                                            Անվանում
                                         </th>
                                         <th style="width: 2%" class="text-center">
-                                            Գինը
+                                            Գին
                                         </th>
                                         <th style="width: 8%" class="text-center">
-                                            Նկարը
+                                            Նկար
                                         </th>
                                         <th style="width: 8%" class="text-center">
-                                            Կատեգորիան
+                                            Կատեգորիա
                                         </th>
                                         <th style="width: 20%">
                                             #

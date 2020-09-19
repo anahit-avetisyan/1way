@@ -111,7 +111,7 @@
 @section("content")
         <div class="col-lg-10 col-12">
             <b>
-                <h3 style="margin-left: 1.5%">
+                <h3 class="ml-lg-3">
                     @foreach($ttt as $texts)
                         {{$texts->title}}
                     @endforeach
@@ -265,10 +265,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-between">
+                <div class="row ml-lg-1 products">
                     @foreach ($products1 as  $product)
                         @if ($product->sale == null)
-                        <div class="productItem mb-4">
+                        <div class="productItem mb-4 mr-lg-4 mr-3">
                             <div>
                                 @php $img = json_decode($product->posters)
                                 @endphp
@@ -308,7 +308,7 @@
                             </div>
                         </div>
                         @else
-                                <div class="productItem mb-4">
+                                <div class="productItem mb-4 mr-lg-4 mr-3">
                                     <div>
                                         <div class="saleNumber"  style="background-color: #072935;border-radius: 50%;color: white;height: 35px;width: 35px;padding: 5px 2px;float: right;margin-right: -14px;margin-top: -18px;">{{$product->sale}}%</div>
                                         @php $img = json_decode($product->posters)
@@ -360,35 +360,86 @@
             </div>
         </div>
         </div>
-    <style>
-        @media only screen and (max-width:374px) {
-            .ItemSquare{
-                width: 125px!important;
-                height: 125px!important;
-            }
+        <style>
+                        @media only screen and (max-width:991px) {
+                            .filterButton{
+                                margin-left:-14px;
+                            }
+                        }
+                        @media only screen and (max-width:540px) {
+                            .ItemSquare{
+                                width: 190px!important;
+                                height: 190px!important;
+                            }
+                            .products{
+                                margin-left:10%;
+                            }
+                            .filterButton{
+                                margin-left:46px;
+                            }
+                        }
 
-        }
+                        @media only screen and (max-width:501px) {
+                            .ItemSquare{
+                                width: 170px!important;
+                                height: 170px!important;
+                            }
+                            .products{
+                                margin-left:7%;
+                            }
+                            .filterButton{
+                                margin-left:29px;
+                            }
+                        }
 
-        @media only screen and (max-width:524px){
-            .ItemSquare{
-                width: 165px!important;
-                height: 165px!important;
-            }
-        }
+                        @media only screen and (max-width:443px) {
+                            .ItemSquare{
+                                width: 160px!important;
+                                height: 160px!important;
+                            }
+                            .products{
+                                margin-left:4%;
+                            }
+                            .filterButton{
+                                margin-left:15px;
+                            }
+                        }
+                        @media only screen and (max-width:412px) {
+                            .ItemSquare{
+                                width: 150px!important;
+                                height: 150px!important;
+                            }
+                            .products{
+                                margin-left:2%;
+                            }
+                            .filterButton{
+                                margin-left:7px;
+                            }
+                        }
 
-        @media only screen and (max-width:420px){
-            .ItemSquare{
-                width: 140px!important;
-                height: 140px!important;
-            }
-        }
+                        @media only screen and (max-width:380px) {
+                            .ItemSquare{
+                                width: 140px!important;
+                                height: 140px!important;
+                            }
+                            .products,.filterButton{
+                                margin-left:0%;
+                            }
 
-        @media only screen and (max-width:330px){
-            .ItemSquare{
-                width: 115px!important;
-                height: 115px!important;
-            }
-        }
+                        }
+
+                        @media only screen and (max-width:360px) {
+                            .ItemSquare{
+                                width: 180px!important;
+                                height: 180px!important;
+                            }
+                            .productItem{
+                                margin-left: 49px;
+                            }
+                            .filterButton{
+                                margin-left:49px;
+                            }
+                        }
     </style>
     <div style="display: flex;justify-content: flex-end;padding-right:14px">{{$products1->links()}}</div>
         </div>

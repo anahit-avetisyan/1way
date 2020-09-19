@@ -28,7 +28,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <a href="{{route("slider.create")}}">
-                                        <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Avelacnel</button>
+                                        <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Ավելացնել</button>
                                     </a></h3>
                             </div>
                             <!-- /.card-header -->

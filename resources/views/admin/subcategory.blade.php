@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Գլխավոր</a></li>
-                            <li class="breadcrumb-item active">Կատեգորիա</li>
+                            <li class="breadcrumb-item active">Ենթատեգորիա</li>
                         </ol>
                     </div>
                 </div>
@@ -77,17 +77,17 @@
 
                                                 </td>
                                                 <td>
-{{--                                                        {{$category->category->titleAM}}--}}
+                                                     {{isset($category->category['titleAM']) ? $category->category['titleAM']: ''}}
 
 
                                                 </td>
 
-                                                <td style="    padding: inherit;">
-                                                    <form  action="{{route('subcategory.edit',$category ->id)}}" method="get" style="color: black;text-align: center">
+                                                <td class="action-field"   >
+                                                    <form  class="delete-button-table"  action="{{route('subcategory.edit',$category ->id)}}" method="get" style="color: black;text-align: center">
                                                         <button class="btn btn-info btn-sm">
                                                             <i class="fas fa-pencil-alt">
                                                             </i>
-                                                            Edit
+                                                            Փոփոխել
                                                         </button>
                                                     </form>
                                                     <form action="{{route('subcategory.destroy',$category->id)}}} " method="post">
@@ -96,7 +96,7 @@
                                                         <button class="btn btn-danger btn-sm" href="#">
                                                             <i class="fas fa-trash">
                                                             </i>
-                                                            Delete
+                                                            Ջնջել
                                                         </button>
                                                     </form>
                                                 </td>

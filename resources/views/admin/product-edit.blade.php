@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Project Add</h1>
+                        <h1>Փափոխել ապրանքը</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Project Add</li>
+                            <li class="breadcrumb-item active">Փափոխել ապրանքը</li>
                         </ol>
                     </div>
                 </div>
@@ -38,15 +38,15 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Անվանումը</label>
+                                    <label for="inputName">Անվանում</label>
                                     <input name="titleAM" value="{{$product->titleAM}}" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըRU</label>
+                                    <label for="inputName">Անվանում/RU</label>
                                     <input name="titleRU" value="{{$product->titleRU}}" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըEN</label>
+                                    <label for="inputName">Անվանում/EN</label>
                                     <input name="titleEN" value="{{$product->titleEN}}" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
@@ -67,12 +67,12 @@
                                            placeholder="Add product description...">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">ՆկարագիրRU</label>
+                                    <label for="inputDescription">Նկարագիր/RU</label>
                                     <input name="descriptionRU" value="{{$product->descriptionRU}}" type="text" class="form-control" id="product-description"
                                            placeholder="Add product description...">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">ՆկարագիրEN</label>
+                                    <label for="inputDescription">Նկարագիր/EN</label>
                                     <input name="descriptionEN" value="{{$product->descriptionEN}}" type="text" class="form-control" id="product-description"
                                            placeholder="Add product description...">
                                 </div>
@@ -133,19 +133,19 @@
                                            >
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputClientCompany">ԳինըAM</label>
+                                    <label for="inputClientCompany">Գինը/AM</label>
                                     <input name="priceAM" value="{{$product->priceAM}}" type="text" id="inputClientCompany" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputClientCompany">ԳինըRU</label>
+                                    <label for="inputClientCompany">Գինը/RU</label>
                                     <input name="priceRU" value="{{$product->priceRU}}" type="text" id="inputClientCompany" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputClientCompany">ԳինըEN</label>
+                                    <label for="inputClientCompany">Գինը/EN</label>
                                     <input name="priceEN" value="{{$product->priceEN}}" type="text" id="inputClientCompany" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputProjectLeader">Նկարը</label>
+                                    <label for="inputProjectLeader">Նկար</label>
                                     <div class="img-container">
 
                                     </div>
@@ -154,9 +154,9 @@
                                     <span class="fileError"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputStatus">Band</label>
+                                    <label for="inputStatus">Ապրանքանիշ</label>
                                     <select name="brend_id"   class="form-control brand product-brend" id="category_id">
-                                        <option selected disabled>Band</option>
+                                        <option selected disabled>Ապրանքանիշ</option>
                                         <span class="brandError"></span>
                                         @isset($brand)
                                             @foreach($brand as $brend)
@@ -167,9 +167,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputStatus">Կատեգորիան</label>
+                                    <label for="inputStatus">Կատեգորիա</label>
                                     <select name="category_id"   class="form-control product-category" id="category">
-                                        <option selected disabled>Կատեգորիան</option>
+                                        <option selected disabled>Կատեգորիա</option>
                                         @isset($category)
                                             @foreach($category as $categories)
                                                 <option value="{{$categories->id}}">{{$categories->titleAM}}</option>
@@ -180,7 +180,7 @@
                                 <div class="form-group">
 
                                     <select name="subcategory_id" id="subcategory"    class="form-control input-sm product-subcategory">
-                                        <option selected disabled>Կատեգորիան</option>
+                                        <option selected disabled>Կատեգորիա</option>
                                         <option value=""></option>
                                     </select>
                                 </div>
@@ -193,9 +193,9 @@
                 </div>
     </div>
     <div class="row">
-        <div class="col-12">
-            <a href="#" class="btn btn-secondary">Cancel</a>
-            <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+        <div class="col-12 button-contollet-bottom">
+            <a href="{{ URL::previous() }}" class="btn btn-secondary btn-first-back">Վերադառնալ</a>
+            <input type="submit" value="Պահպանել (save)" class="btn btn-success float-right">
         </div>
     </div>
     </section>

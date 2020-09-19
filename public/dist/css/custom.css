@@ -5,3 +5,26 @@
     flex-direction: column;
     margin-left: 20px;
 }
+.action-field {
+    display: flex;
+
+    padding:  0 px;
+    border-top: white!important;
+}
+.delete-button-table {
+    margin-right: 8px;
+}
+.img-container {
+    margin-bottom: 15px;
+    display: flex;
+}
+.img-container .img-product {
+    margin-right: 10px;
+}
+.button-contollet-bottom {
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-first-back {
+    margin-right: 20px;
+}

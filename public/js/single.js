@@ -1,8 +1,8 @@
-let err = document.getElementsByClassName('err')[0];
-let errcolor = document.getElementsByClassName('errcolor')[0];
+let err = document.getElementsByClassName("err")[0];
+let errcolor = document.getElementsByClassName("errcolor")[0];
 
 const colorRadio = document.querySelectorAll(".colorRadio");
-const colorRadioInput = document.querySelectorAll(".colorRadioInput")
+const colorRadioInput = document.querySelectorAll(".colorRadioInput");
 const forColorRadio = document.querySelectorAll(".forColorRadio");
 
 const sizeRadio = document.querySelectorAll(".sizeRadio");
@@ -13,15 +13,14 @@ const quantityRadio = document.querySelectorAll(".quantityRadio");
 const quantityRadioInput = document.querySelectorAll(".quantityRadioInput");
 const forQuantityRadio = document.querySelectorAll(".forQuantityRadio");
 
-
 const selectRadio = (class1, class2, inputValue, error) => {
     for (let i = 0; i < class1.length; i++) {
         class1[i].addEventListener("click", () => {
-            for(let s = 0; s < class1.length; s++) {
+            for (let s = 0; s < class1.length; s++) {
                 class1[s].classList.remove("i1");
             }
-            class1[i].classList.add("i1")
-            error.style.display = 'none';
+            class1[i].classList.add("i1");
+            error.style.display = "none";
             for (let j = 0; j < class2.length; j++) {
                 class2[j].setAttribute("checked", "checked");
                 class2[j].value = inputValue[i].value;
@@ -30,10 +29,10 @@ const selectRadio = (class1, class2, inputValue, error) => {
     }
 };
 
-selectRadio(colorRadio, forColorRadio, colorRadioInput, errcolor)
-selectRadio(sizeRadio, forSizeRadio, sizeRadioInput, err)
-selectRadio(quantityRadio, forQuantityRadio, quantityRadioInput, err)
-selectRadio(quantityRadio, forQuantityRadio, quantityRadioInput, err)
+selectRadio(colorRadio, forColorRadio, colorRadioInput, errcolor);
+selectRadio(sizeRadio, forSizeRadio, sizeRadioInput, err);
+selectRadio(quantityRadio, forQuantityRadio, quantityRadioInput, err);
+selectRadio(quantityRadio, forQuantityRadio, quantityRadioInput, err);
 
 // // let cart = document.getElementsByClassName('cart')[0];
 // // let finalprice = document.getElementsByClassName('finalprice')[0].innerHTML;
@@ -58,7 +57,7 @@ selectRadio(quantityRadio, forQuantityRadio, quantityRadioInput, err)
 let imgdiv = document.getElementsByClassName("imgdiv");
 var newimg = document.getElementsByClassName("newImg")[0];
 var newDiv = document.getElementById("newDiv");
-for(let i=0;i<imgdiv.length;i++){
+for (let i = 0; i < imgdiv.length; i++) {
     imgdiv[i].onclick = function () {
         newDiv.style.display = "block";
         newimg.style.backgroundImage = this.style.backgroundImage;
@@ -79,32 +78,30 @@ var inp = document.getElementsByClassName("priceinp")[0];
 let max = document.getElementsByClassName("mxvalue")[0].innerHTML;
 let plus = document.getElementsByClassName("plus")[0];
 let minus = document.getElementsByClassName("minus")[0];
-const quantity=document.querySelector('#quantity');
-
+const quantity = document.querySelector("#quantity");
 
 minus.addEventListener("click", function () {
     if (inp.value <= 1) {
-        return false;}
+        return false;
+    }
     inp.value--;
-    quantity.value=inp.value;
+    quantity.value = inp.value;
 });
 plus.addEventListener("click", function () {
     if (inp.value >= +max) {
-        return false;}
+        return false;
+    }
     inp.value++;
-    quantity.value=inp.value;
+    quantity.value = inp.value;
 });
 inp.addEventListener("input", function () {
     $(this).val(
         $(this)
             .val()
             .replace(/[^1-9]/g, "")
-     );
-    quantity.value=inp.value;
-  });
-
-
-
+    );
+    quantity.value = inp.value;
+});
 
 $(".check").click(function () {
     $(".check").removeClass("i1");
@@ -127,7 +124,10 @@ function formValidate() {
         err.style.display = "none";
         errcolor.style.display = "none";
         return true;
-    } else if (!$(".check").hasClass("i1") && !$(".checkcolor").hasClass("i1")) {
+    } else if (
+        !$(".check").hasClass("i1") &&
+        !$(".checkcolor").hasClass("i1")
+    ) {
         errcolor.style.display = "block";
         errcolor.innerHTML = "Նշի Գույն";
         err.style.display = "block";
@@ -144,33 +144,27 @@ function formValidate() {
     }
 }
 
-
 ////////////////////////////////////////////////
 ///////////////////////lightslider/////////////
 /////////////////////////////////////////////
-$("#lightSlider").lightSlider({
+let slider = $("#lightSlider").lightSlider({
     gallery: true,
     item: 1,
     thumbItem: 4,
-    enableDrag:true
-    // controls: false,
+    enableDrag: true,
+    controls: false,
 });
 
-const alert=document.querySelector('.alert');
-alert.classList.add('fade');
+const right = document.querySelector(".right");
+const left = document.querySelector(".left");
 
+right.addEventListener("click", () => {
+    slider.goToNextSlide();
+});
 
+left.addEventListener("click", () => {
+    slider.goToPrevSlide();
+});
 
-
-// const slider = document.querySelector(".lSSlideWrapper");
-// const left = document.querySelector(".sliderLeft");
-// const right = document.querySelector(".sliderRight");
-// slider.addEventListener("mouseenter", () => {
-//     left.classList.add("boxShadow");
-//     right.classList.add("boxShadow");
-// });
-// slider.addEventListener("mouseleave", () => {
-//     left.classList.remove("boxShadow");
-//     right.classList.remove("boxShadow");
-// });
-
+const alert = document.querySelector(".alert");
+alert.classList.add("fade");

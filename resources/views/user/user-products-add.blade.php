@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ URL::asset('plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ URL::asset('dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{URL::asset("dist/css/custom.css")}}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -119,17 +120,17 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Անվանումը</label>
+                                    <label for="inputName">Անվանում</label>
                                     <input name="titleAM" type="text" id="inputName" class="form-control titleAM">
                                     <span class="AMerror" style="color: red"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըRU</label>
+                                    <label for="inputName">Անվանում/RU</label>
                                     <input name="titleRU" type="text" id="inputName" class="form-control titleRU">
                                     <span class="titleRU1" style="color: red"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըEN</label>
+                                    <label for="inputName">Անվանում/EN</label>
                                     <input name="titleEN" type="text" id="inputName" class="form-control titleEN">
                                     <span class="titleEN1" style="color: red"></span>
                                 </div>
@@ -154,13 +155,13 @@
                                     <span class="descAMerror" style="color: red"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">ՆկարագիրRU</label>
+                                    <label for="inputDescription">Նկարագիր/RU</label>
                                     <input name="descriptionRU" value="{{ old('descriptionRU') }}" type="text" class="descriptionRU form-control" id="product-description"
                                            placeholder="Add product description...">
                                     <span class="descRUerror" style="color: red"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">ՆկարագիրEN</label>
+                                    <label for="inputDescription">Նկարագիր/EN</label>
                                     <input name="descriptionEN" value="{{ old('descriptionEN') }}" type="text" class="descriptionEN form-control" id="product-description"
                                            placeholder="Add product description...">
                                     <span class="descENerror" style="color: red"></span>
@@ -182,7 +183,7 @@
                                             <option value="Տարիք">Տարիք</option>
                                             <option class="etc">Այլ․․․</option>
                                         </select>
-                                        <input id="fvefrbve" type="text" name="size[]" placeholder="բլա բլա բլա">
+                                        <input id="fvefrbve" type="text" name="size[]" placeholder=" ">
                                         <span class="categoryAdd" style="cursor: pointer;background-color: green;padding: 4px 10px;color: white;font-weight: bold;font-size: 17px;border-radius: 8px;">+</span>
                                         <span class="categoryRemove" style="cursor: pointer;background-color: red;padding: 4px 10px;color: white;font-weight: bold;font-size: 17px;border-radius: 8px;">-</span>
                                     </div>
@@ -219,24 +220,24 @@
                                     <br>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">Զեղջը</label>
+                                    <label for="inputDescription">Զեղջ</label>
                                     <input name="sale" type="number" class="form-control" id="product-description"
                                            placeholder="Add product description...">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputClientCompany">ԳինըAM</label>
+                                    <label for="inputClientCompany">Գին/AM</label>
                                     <input name="priceAM" type="text" id="inputClientCompany" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputClientCompany">ԳինըRU</label>
+                                    <label for="inputClientCompany">Գին/RU</label>
                                     <input name="priceRU" type="text" id="inputClientCompany" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputClientCompany">ԳինըEN</label>
+                                    <label for="inputClientCompany">Գին/EN</label>
                                     <input name="priceEN" type="text" id="inputClientCompany" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputProjectLeader">Նկարը</label>
+                                    <label for="inputProjectLeader">Նկար</label>
                                     <input name="posters[]" type="file" class="form-control filestyle" data-buttonName="btn-primary"
                                            id="product-posters" multiple>
                                 </div>
@@ -244,7 +245,7 @@
                                 <div class="form-group">
                                     <label for="inputStatus">Կատեգորիան</label>
                                     <select name="category_id" class="form-control" id="category">
-                                        <option selected disabled>Կատեգորիան</option>
+                                        <option selected disabled>Կատեգորիա</option>
                                         @isset($category)
                                             @foreach($category as $categories)
                                                 <option value="{{$categories->id}}">{{$categories->titleAM}}</option>
@@ -254,7 +255,7 @@
                                 </div>
                                 <div class="form-group">
                                     <select name="subcategory_id" id="subcategory" class="form-control input-sm">
-                                        <option selected disabled>Կատեգորիան</option>
+                                        <option selected disabled>Կատեգորիա</option>
                                         <option value=""></option>
                                     </select>
                                 </div>
@@ -264,8 +265,9 @@
                 </div>
     </div>
     <div class="row">
-        <div class="col-12">
-            <button   value="Create new Porject" class="btn btn-success float-right">Ավելացնել</button>
+        <div class="col-12 button-contollet-bottom">
+            <a href="{{ URL::previous() }}" class="btn btn-secondary btn-first-back">Վերադառնալ</a>
+            <button  class="btn btn-success float-right">Պահպանել (save)</button>
         </div>
     </div>
     </section>
@@ -277,16 +279,18 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js "></script>
 <script type="text/javascript">
+
     $(document).ready(function () {
-        $('select[name="category_id"]').on("change",function () {
+        $('#category').on("change",function () {
             var category_id = $(this).val();
             if(category_id){
-                console.log(category_id);
+
                 $.ajax({
                     url:'1way/'+ category_id ,
                     type:"GET",
                     dataType: "json",
                     success:function (data) {
+                        console.log(data,'llll')
                         $('select[name="subcategory_id"]').empty();
                         $.each(data,function (key,value) {
                             $('select[name="subcategory_id"]').append

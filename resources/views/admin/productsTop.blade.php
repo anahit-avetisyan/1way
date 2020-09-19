@@ -50,23 +50,32 @@
                                         <th style="width: 1%">
                                             #
                                         </th>
+                                        <th style="width: 1%">
+                                            id
+                                        </th>
                                         <th style="width: 8%">
                                             Անվանումը
+                                        </th>
+                                        <th style="width: 8%">
+                                            Կոդ
                                         </th>
                                         <th style="width: 2%" class="text-center">
                                             Գինը
                                         </th>
 
-                                        <th style="width: 8%" class="text-center">
-                                            Նկարագիր
-                                        </th>
+                                        {{--                            <th style="width: 8%" class="text-center">--}}
+                                        {{--                                Նկարագիր--}}
+                                        {{--                            </th>--}}
 
                                         <th style="width: 8%" class="text-center">
                                             Նկարը
                                         </th>
-{{--                                        <th style="width: 8%" class="text-center">--}}
-{{--                                            Կատեգորիան--}}
-{{--                                        </th>--}}
+                                        <th style="width: 8%" class="text-center">
+                                            Ապրանքանիշ (Brand)
+                                        </th>
+                                        <th style="width: 8%" class="text-center">
+                                            Կատեգորիան
+                                        </th>
                                         <th style="width: 20%">
                                             #
                                         </th>
@@ -74,24 +83,30 @@
                                     </thead>
                                     <tbody>
                                     @isset($products)
-                                        @foreach($products as $product)
+                                        @foreach($products as $key=>$product)
                                             <tr>
+                                                <td>
+                                                    {{$key+1}}
+                                                </td>
                                                 <td>
                                                     {{$product->id}}
                                                 </td>
                                                 <td>
                                                     <a>
                                                         {{--                                    {{dd($product)}}--}}
-                                                        {{$product->titleAM}}
+                                                        {{mb_substr($product->titleAM,0,17)}}
                                                     </a>
                                                     <br/>
                                                     <a>
-                                                        {{$product->titleRU}}
+                                                        {{mb_substr($product->titleRU,0,17)}}
                                                     </a>
                                                     <br>
                                                     <a>
-                                                        {{$product->titleEN}}
+                                                        {{mb_substr($product->titleEN,0,17)}}
                                                     </a>
+                                                </td>
+                                                <td>
+                                                    {{$product->code}}
                                                 </td>
                                                 <td class="project-state">
                                                     {{--                                <span class="badge badge-success">--}}
@@ -107,22 +122,35 @@
                                                     {{$product->priceEN}}&nbsp;&nbsp;$
                                                     {{--                                </span>--}}
                                                 </td>
-                                                <td >
-                                                    <a href="">{{mb_substr($product->descriptionAM, 0,10)}}</a>
-                                                    <br>
-                                                    <a href="">{{mb_substr($product->descriptionRU, 0, 10)}}</a>
-                                                    <br>
-                                                    <a href="">{{mb_substr($product->descriptionEN, 0, 10)}}</a>
-                                                </td>
+                                                {{--                            <td >--}}
+                                                {{--                                <a href="">{{mb_substr($product->descriptionAM, 0, 20)}}</a>--}}
+                                                {{--                                <br>--}}
+                                                {{--                                <a href="">{{mb_substr($product->descriptionRU, 0, 20)}}</a>--}}
+                                                {{--                                <br>--}}
+                                                {{--                                <a href="">{{mb_substr($product->descriptionEN, 0, 20)}}</a>--}}
+                                                {{--                            </td>--}}
                                                 <td>
-                                                    @foreach(json_decode($product->posters) as $poster)
-                                                        <img src="{{asset('images/'.$poster)}}" alt="{{$poster}}" width="60">
+                                                    @php $img = json_decode($product->posters) @endphp
+                                                    <img src="{{asset('images/'.$img[0])}}" width="60">
+                                                </td>
+
+
+                                                <td>
+                                                    <?php $gdfxhdhd= \App\Brend::where("user_id",$product->brend_id)->get() ?>
+                                                    @foreach($gdfxhdhd as $gfgdfd)
+                                                        <a href="{{route("brandIndex",["id"=>$product->brend_id])}}">
+                                                            {{$gfgdfd->title}}
+                                                        </a>
                                                     @endforeach
                                                 </td>
-{{--                                                <td>--}}
-{{--                                                    {{$product->category->titleAM}}--}}
-{{--                                                </td>--}}
-                                                <td style="    padding: inherit;">
+
+                                                <td>
+                                                    <?php $sdvs= \App\Category::where("id",$product->category_id)->get() ?>
+                                                    @foreach($sdvs as $fbgdfb)
+                                                        {{$fbgdfb->titleAM}}
+                                                    @endforeach
+                                                </td>
+                                                <td >
                                                     <form action="{{route('product.destroyTop',$product->id)}}" method="post" style="color: black;text-align: left">
                                                         @csrf
                                                         <button class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none">Ջնջել ԹՈՓ-ից</button>

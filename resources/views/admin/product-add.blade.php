@@ -34,17 +34,17 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="inputName">Անվանումը</label>
+                                <label for="inputName">Անվանում</label>
                                 <input name="titleAM"  id="title" type="text"  class="form-control">
                                 <span class="AMerror" style="color: red"></span>
                             </div>
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըRU</label>
+                                    <label for="inputName">Անվանում/RU</label>
                                     <input name="titleRU" type="text" id="inputName" class="form-control titleRU">
                                     <span class="titleRU1" style="color: red"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըEN</label>
+                                    <label for="inputName">Անվանում/EN</label>
                                     <input name="titleEN" type="text" id="inputName" class="form-control titleEN">
                                     <span class="titleEN1" style="color: red"></span>
                                 </div>
@@ -69,13 +69,13 @@
                                 <span class="descAMerror" style="color: red"></span>
                             </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">ՆկարագիրRU (Max.255 նիշ)</label>
+                                    <label for="inputDescription">Նկարագիր/RU (Max.255 նիշ)</label>
                                     <input name="descriptionRU" value="{{ old('descriptionRU') }}" type="text" class="descriptionRU form-control" id="product-description"
                                            placeholder="Add product description...">
                                     <span class="descRUerror" style="color: red"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">ՆկարագիրEN (Max.255 նիշ)</label>
+                                    <label for="inputDescription">Նկարագիր/EN (Max.255 նիշ)</label>
                                     <input name="descriptionEN" value="{{ old('descriptionEN') }}" type="text" class="descriptionEN form-control" id="product-description"
                                            placeholder="Add product description...">
                                     <span class="descENerror" style="color: red"></span>
@@ -134,31 +134,31 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputDescription">Զեղջը</label>
+                                    <label for="inputDescription">Զեղջ</label>
                                     <input name="sale" type="number" class="form-control" id="product-description"
                                            placeholder="Add product description...">
                                 </div>
                             <div class="form-group">
-                                <label for="inputClientCompany">ԳինըAM</label>
+                                <label for="inputClientCompany">Գին/AM</label>
                                 <input name="priceAM" type="text" id="inputClientCompany" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputClientCompany">ԳինըAM</label>
+                                <label for="inputClientCompany">Գին/AM</label>
                                 <input name="priceRU" type="text" id="inputClientCompany" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputClientCompany">ԳինըAM</label>
+                                <label for="inputClientCompany">Գին/AM</label>
                                 <input name="priceEN" type="text" id="inputClientCompany" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputProjectLeader">Նկարը</label>
+                                <label for="inputProjectLeader">Նկար</label>
                                 <input name="posters[]" type="file" class="form-control filestyle" data-buttonName="btn-primary"
                                        id="product-posters" multiple>
                             </div>
                             <div class="form-group">
-                                <label for="inputStatus">Band</label>
+                                <label for="inputStatus">Ապրանքանիշ</label>
                                 <select name="brend_id" class="form-control" id="category_id">
-                                    <option selected disabled>Band</option>
+                                    <option selected disabled>Ապրանքանիշ</option>
                                     @isset($brand)
                                         @foreach($brand as $brend)
                                             <option value="{{$brend->user_id}}">{{$brend->title}}</option>
@@ -169,9 +169,9 @@
 {{--                            {{dd($category)}}--}}
 
                             <div class="form-group">
-                                <label for="inputStatus">Կատեգորիան</label>
+                                <label for="inputStatus">Կատեգորիա</label>
                                 <select name="category_id" class="form-control" id="category">
-                                    <option selected disabled>Կատեգորիան</option>
+                                    <option selected disabled>Կատեգորիա</option>
                                     @isset($category)
                                         @foreach($category as $categories)
                                             <option value="{{$categories->id}}">{{$categories->titleAM}}</option>
@@ -182,7 +182,7 @@
                             <div class="form-group">
 
                                 <select name="subcategory_id" id="subcategory" class="form-control input-sm">
-                                    <option selected disabled>Կատեգորիան</option>
+                                    <option selected disabled>Կատեգորիա</option>
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -193,8 +193,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <button   value="Create new Porject" class="btn btn-success float-right">Ավելացնել</button>
+                <div class="col-12 button-contollet-bottom">
+                    <a href="{{ URL::previous() }}" class="btn btn-secondary btn-first-back">Վերադառնալ</a>
+                    <button   value="Պահպանել (save)" class="btn btn-success float-right">Ավելացնել</button>
                 </div>
             </div>
         </section>

@@ -13,6 +13,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use function Sodium\add;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class UserProductController extends Controller
 {
@@ -41,7 +42,14 @@ class UserProductController extends Controller
      */
     public function store(Request $request)
     {
-
+//        $input= $request->all();
+//        if(!isset($input['availability'])||!isset($input['category_id'])||!isset($input['subcategory_id'])||!isset($input['titleAM'])||!isset($input['quantity'])||!isset($input['sizeName'])||!isset($input['descriptionAM'])||!isset($input['priceAM'])||!isset($input['priceRU'])||!isset($input['priceEN'])){
+//            $category = Category::get();
+//            $brand = Brend::all();
+//            $subcategory = SubCategory::get();
+//            return redirect()->back()->with(session()->flash('alert-danger', 'Ապրանքը Ավելացված չէ,ոչ բոլոր պարտադիր դաշտերն են լրացված'));
+//           // return redirect()->route('product.index')->with(session()->flash('alert-danger', 'Ապրանքը Ավելացված չէ,ոչ բոլոր պարտադիր դաշտերն են լրացված'));
+//        }
         $fff = [];
         $ggg=Brend::get("user_id");
         for ($i=0;$i<count($ggg);$i++){
@@ -65,7 +73,9 @@ class UserProductController extends Controller
                     foreach ($files as $file ) {
                         $file_name = rand(1,9999).$file->getClientOriginalName();
                         array_push($image,$file_name);
-                        $file->move(public_path() . '/images/', $file_name);
+                        $image_resize = Image::make($file->getRealPath());
+                        $image_resize->resize(300, 300);
+                        $image_resize->save(public_path('images/' .$file_name));
                     }
                     $input['posters'] = json_encode($image);
                     $id = $request->user_id;
@@ -119,13 +129,23 @@ class UserProductController extends Controller
       {
           $files = $request->except('_token','_method');
           $img = [];
+          $product = Product::where('id',$id)->first();
           if(isset($files['posters'])){
+              $img =  json_decode($product->posters, true);
               foreach ($files['posters'] as $file){
                   $imgName = rand(1,20). $file->getClientOriginalName();
                   array_push($img,$imgName);
-                  $file->move(public_path() . '/images/',$imgName);
+                  $image_resize = Image::make($file->getRealPath());
+                  $image_resize->resize(300, 300);
+                  $image_resize->save(public_path('images/' .$imgName));
               }
               $files['posters']= json_encode($img);
+          }
+          if(isset($files['size']) && count($files['size'])>0){
+              $files['size'] =  serialize($files['size']);
+          }
+          if(isset($files['color']) && count($files['color'])>0){
+              $files['color'] =  serialize($files['color']);
           }
           $prod = Product::find($id);
           $prod->update($files);
@@ -147,11 +167,28 @@ class UserProductController extends Controller
       }
     public function ajax($id){
         $sub = SubCategory::where("category_id",$id)->pluck('titleAM','id');
+
         return json_encode($sub);
 
     }
+    public function productData(Request $request,$id)
+    {
+        $product = Product::with('getSubCategory','category','brend')->where('id',$id)->first()->toArray();
+
+        if(!is_null($product['size'])){
+            $product['size'] =  unserialize($product['size']);
+        }
+        if(!is_null($product['color'])){
+            $product['color'] =  unserialize($product['color']);
+        }
+        return response()->json([
+            'product' => $product,
+            'success' => true
+        ]);
+    }
     public function way($id){
         $sub = SubCategory::where("category_id",$id)->pluck('titleAM','id');
+
         return json_encode($sub);
 
     }

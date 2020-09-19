@@ -65,9 +65,9 @@
                                                         <img src="{{asset('images/'.$poster)}}" alt="{{$poster}}" width="60">
                                                     @endforeach
                                                 </td>
-                                                <td >
-                                                    <form  action="{{route('brand.edit',$product->id)}}" method="get" style="color: black;text-align: left">
-                                                        <button class="btn waves-effect waves-light btn-rounded btn-warning" style="text-align: center;border-radius: 15px;outline: none">edit</button>
+                                                <td class="action-field" >
+                                                    <form  class="delete-button-table" action="{{route('brand.edit',$product->id)}}" method="get" style="color: black;text-align: left">
+                                                        <button class="btn waves-effect waves-light btn-rounded btn-warning" style="text-align: center;border-radius: 15px;outline: none">Փոփոխել</button>
                                                     </form>
                                                     <form action="{{route('brand.destroy',$product->id)}}" method="post" style="color: black;text-align: left">
                                                         @csrf

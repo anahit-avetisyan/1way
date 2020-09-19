@@ -37,16 +37,16 @@
                                 #
                             </th>
                             <th style="width: 20%">
-                                Անվանումը Հայերեն
+                                Անվանում/AM
                             </th>
                             <th style="width: 30%">
-                                Անվանումը Руский
+                                Անվանում/RU
                             </th>
                             <th>
-                                Անվանումը  English
+                                Անվանում/EN
                             </th>
                             <th>
-                             Ննարը
+                             Նկար
                              </th>
                             <th style="width: 20%">
                                 #
@@ -70,16 +70,17 @@
                                     {{$category->titleEN}}
                             </td>
                             <td>
-                                @foreach(json_decode($category->posters) as $poster)
-                                    <img src="{{asset('images/'.$poster)}}" alt="{{$poster}}" width="60">
-                                @endforeach
+                                <img src="{{asset('images/'.json_decode($category->posters)[0])}}" alt="{{json_decode($category->posters)[0]}}" width="60">
+{{--                                @foreach(json_decode($category->posters) as $poster)--}}
+{{--                                    <img src="{{asset('images/'.$poster)}}" alt="{{$poster}}" width="60">--}}
+{{--                                @endforeach--}}
                             </td>
-                            <td style="    padding: inherit;">
-                                <form  action="{{route('category.edit',$category ->id)}}" method="get" style="color: black;text-align: center">
+                            <td class="action-field"  >
+                                <form  action="{{route('category.edit',$category ->id)}}" method="get" class="delete-button-table" style="color: black;text-align: center">
                                 <button class="btn btn-info btn-sm">
                                     <i class="fas fa-pencil-alt">
                                     </i>
-                                    Edit
+                                    Փոփոխել
                                 </button>
                                 </form>
                                 <form action="{{route('category.destroy',$category->id)}}} " method="post">
@@ -88,7 +89,7 @@
                                 <button class="btn btn-danger btn-sm" href="#">
                                     <i class="fas fa-trash">
                                     </i>
-                                    Delete
+                                    Ջնջել
                                 </button>
                                 </form>
                             </td>

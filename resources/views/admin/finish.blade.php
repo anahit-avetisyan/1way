@@ -42,12 +42,25 @@
                                             Գինը
                                         </th>
 
-                                        <th style="width: 8%" class="text-center">
-                                            Նկարագիր
-                                        </th>
+
 
                                         <th style="width: 8%" class="text-center">
                                             Նկարը
+                                        </th>
+                                        <th style="width: 8%" class="text-center">
+                                            Կոդ
+                                        </th>
+                                        <th style="width: 8%" class="text-center">
+                                            Չափս
+                                        </th>
+                                        <th style="width: 8%" class="text-center">
+                                            Գույն
+                                        </th>
+                                        <th style="width: 8%" class="text-center">
+                                            Քանակ
+                                        </th>
+                                        <th style="width: 8%" class="text-center">
+                                            Վճարման եղանակ
                                         </th>
                                         <th style="width: 8%" class="text-center">
                                             Կատեգորիան
@@ -74,17 +87,7 @@
                                                     <br>
                                                     {{$product->priceEN}}&nbsp;&nbsp;$
                                                 </td>
-                                                <td >
-                                                    {{$product->name}}
-                                                    <br>
-                                                    {{$product->surname}}
-                                                    <br>
-                                                    {{$product->phone}}
-                                                    <br>
-                                                    {{$product->city}}
-                                                    <br>
-                                                    {{$product->address}}
-                                                </td>
+
                                                 <td>
                                                     @php $img = json_decode($product->posters)
                                                     @endphp
@@ -111,7 +114,7 @@
                                                         Կանխիկ
                                                     @endif
                                                 </td>
-                                                <td style="    padding: inherit;">
+                                                <td >
                                                     <form action="{{route('product.destroy',$product->id)}}" method="post" style="color: black;text-align: left">
                                                         @csrf
                                                         @method('DELETE')

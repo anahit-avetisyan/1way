@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Validator;
 use function Sodium\add;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductController extends Controller
 {
@@ -116,7 +117,9 @@ class ProductController extends Controller
             foreach ($files as $file ) {
                 $file_name = rand(1,9999).$file->getClientOriginalName();
                 array_push($image,$file_name);
-                $file->move(public_path() . '/images/', $file_name);
+                $image_resize = Image::make($file->getRealPath());
+                $image_resize->resize(300, 300);
+                $image_resize->save(public_path('images/' .$file_name));
             }
             $input['posters'] = json_encode($image);
 
@@ -185,7 +188,11 @@ class ProductController extends Controller
             foreach ($files['posters'] as $file){
                 $imgName = rand(1,20). $file->getClientOriginalName();
                 array_push($img,$imgName);
-                $file->move(public_path() . '/images/',$imgName);
+                $image_resize = Image::make($file->getRealPath());
+                $image_resize->resize(300, 300);
+                $image_resize->save(public_path('images/' .$imgName));
+
+
             }
             $files['posters']= json_encode($img);
         }

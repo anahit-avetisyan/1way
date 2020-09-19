@@ -23,7 +23,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <a href="{{route("logo.create")}}">
-                                        <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Avelacnel</button>
+                                        <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Ավելացնել</button>
                                     </a></h3>
                             </div>
                             <!-- /.card-header -->
@@ -51,7 +51,7 @@
                                                 <td>{{$contacts->address}}</td>
                                                 <td>
                                                     <form  action="{{route('contact.edit',$contacts->id)}}" method="get" style="color: black;text-align: center">
-                                                        <button class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none">edit</button>
+                                                        <button class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none">Փոփոխել</button>
                                                     </form>
                                                 </td>                                        <td>
                                                     <form action="{{route('contact.destroy',$contacts->id)}}" method="post" style="color: black">

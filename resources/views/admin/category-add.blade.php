@@ -6,12 +6,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Project Add</h1>
+                        <h1>Կատեգորիա</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Project Add</li>
+                            <li class="breadcrumb-item active">Կատեգորիա</li>
                         </ol>
                     </div>
                 </div>
@@ -35,19 +35,19 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="inputName">Անվանումը</label>
+                                <label for="inputName">Անվանում</label>
                                 <input name="titleAM" type="text" id="inputName" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputName">Անվանումը</label>
+                                <label for="inputName">Անվանում</label>
                                 <input name="titleRU" type="text" id="inputName" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputName">Անվանումը</label>
+                                <label for="inputName">Անվանում</label>
                                 <input name="titleEN" type="text" id="inputName" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputProjectLeader">Նկարը</label>
+                                <label for="inputProjectLeader">Նկար</label>
                                 <input name="posters[]" type="file" class="form-control filestyle" data-buttonName="btn-primary"
                                        id="product-posters" multiple >
                                 </div>
@@ -58,8 +58,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+                    <div class="col-12 button-contollet-bottom">
+                        <a href="{{ URL::previous() }}" class="btn btn-secondary btn-first-back">Վերադառնալ</a>
+                        <input type="submit" value="Պահպանել (save)" class="btn btn-success float-right">
                     </div>
                 </div>
             </section>

@@ -76,10 +76,11 @@
                                                 </div>
                                                 @endfor
                                                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                                                    <span class="carousel-control-prev-icon"></span>
+                                                    <span class="sliderArrow">&#x2039;</span>
+                                                    
                                                 </a>
                                                 <a class="carousel-control-next" href="#demo" data-slide="next">
-                                                    <span class="carousel-control-next-icon"></span>
+                                                    <span class="sliderArrow">&#x203A;</span>
                                                 </a>
                                         </div>
                                         <ol class="carousel-indicators
@@ -181,13 +182,13 @@
                     @endforeach
                 </b>
                 <div class="container apranqner1">
-                    <div class="row">
+                    <div class="row products">
                         <div class="col">
-                            <div class="row justify-content-between TopSale">
+                            <div class="row TopSale">
                                 @foreach ($productTop as $key => $product)
                                     @if ($product->sale == null)
                                         @if ($key < 15)
-                                            <div class="productItem mb-4">
+                                            <div class="productItem mb-4 ml-3 mr-lg-3 mr-md-2 mr-2">
                                                 <div>
                                                     @php $img = json_decode($product->posters) @endphp
                                                     <a href="{{ route('AM.single',[$product->product_id,"curse"=>$curse]) }}" title="{{$product->titleAM}}"style="text-decoration: none">
@@ -237,7 +238,7 @@
                                         @endif
                                     @else
                                         @if ($key < 15)
-                                            <div class="productItem mb-4">
+                                            <div class="productItem mb-4 ml-3 mr-lg-3 mr-md-2 mr-2">
                                                 <div>
                                                     <div class="saleNumber"  style="background-color: #072935;border-radius: 50%;color: white;height: 35px;width: 35px;padding: 5px 2px;float: right;margin-right: -14px;margin-top: -18px;">{{$product->sale}}%</div>
                                                     @php $img = json_decode($product->posters) @endphp
@@ -309,7 +310,7 @@
 
                                         @if ($product->sale == null)
                                             @if ($key >= 15 && $key <30)
-                                                <div class="productItem bottomProduct">
+                                                <div class="productItem bottomProduct ml-3 mr-lg-3 mr-2">
                                                     <div>
                                                         <div class="saleNumber"  style="background-color: #072935;border-radius: 50%;color: white;height: 35px;width: 35px;padding: 5px 2px;float: right;margin-right: -14px;margin-top: -18px;">{{$product->sale}}%</div>
                                                         @php $img = json_decode($product->posters)
@@ -360,7 +361,7 @@
                                             @endif
                                         @else
                                             @if ($key >= 15 && $key <30)
-                                                <div class="productItem mb-4">
+                                                <div class="productItem mb-4 ml-3 mr-lg-3 mr-2">
                                                     <div>
                                                         <div class="saleNumber"  style="background-color: #072935;border-radius: 50%;color: white;height: 35px;width: 35px;padding: 5px 2px;float: right;margin-right: -14px;margin-top: -18px;">{{$product->sale}}%</div>
                                                         @php $img = json_decode($product->posters) @endphp
@@ -465,7 +466,7 @@
                             <div class="row">
                                 @foreach ($productsSal as $key => $product)
                                     @isset($product->sale)
-                                        @if ($key < 15) <div class="productItem bottomProduct">
+                                        @if ($key < 15) <div class="productItem bottomProduct ml-3 mr-lg-3 mr-2">
                                             <div>
                                                 <div class="saleNumber"  style="background-color: #072935;border-radius: 50%;color: white;height: 35px;width: 35px;padding: 5px 2px;float: right;margin-right: -14px;margin-top: -18px;">{{$product->sale}}%</div>
                                                 @php $img = json_decode($product->posters)
@@ -559,7 +560,7 @@
                             <div class="row">
                                 @foreach ($productsSal as $key => $product)
                                     @if ($key >= 15 && $key <30)
-                                        <div class="productItem bottomProduct">
+                                        <div class="productItem bottomProduct ml-3 mr-lg-3 mr-2">
                                             <div>
                                                 <div class="saleNumber"  style="background-color: #072935;border-radius: 50%;color: white;height: 35px;width: 35px;padding: 5px 2px;float: right;margin-right: -14px;margin-top: -18px;">{{$product->sale}}%</div>
                                                 @php $img = json_decode($product->posters)
@@ -623,6 +624,87 @@
         </div>
     </div>
     </div>
+    <style>
+                        @media only screen and (max-width:991px) {
+                            .filterButton{
+                                margin-left:-14px;
+                            }
+                        }
+                        @media only screen and (max-width:540px) {
+                            .ItemSquare{
+                                width: 190px!important;
+                                height: 190px!important;
+                            }
+                            .products{
+                                margin-left:10%;
+                            }
+                            .filterButton{
+                                margin-left:46px;
+                            }
+                        }
+
+                        @media only screen and (max-width:501px) {
+                            .ItemSquare{
+                                width: 170px!important;
+                                height: 170px!important;
+                            }
+                            .products{
+                                margin-left:7%;
+                            }
+                            .filterButton{
+                                margin-left:29px;
+                            }
+                        }
+
+                        @media only screen and (max-width:443px) {
+                            .ItemSquare{
+                                width: 160px!important;
+                                height: 160px!important;
+                            }
+                            .products{
+                                margin-left:4%;
+                            }
+                            .filterButton{
+                                margin-left:15px;
+                            }
+                        }
+                        @media only screen and (max-width:412px) {
+                            .ItemSquare{
+                                width: 150px!important;
+                                height: 150px!important;
+                            }
+                            .products{
+                                margin-left:2%;
+                            }
+                            .filterButton{
+                                margin-left:7px;
+                            }
+                        }
+
+                        @media only screen and (max-width:380px) {
+                            .ItemSquare{
+                                width: 140px!important;
+                                height: 140px!important;
+                            }
+                            .products,.filterButton{
+                                margin-left:0%;
+                            }
+
+                        }
+
+                        @media only screen and (max-width:360px) {
+                            .ItemSquare{
+                                width: 180px!important;
+                                height: 180px!important;
+                            }
+                            .productItem{
+                                margin-left: 49px !important;
+                            }
+                            .filterButton{
+                                margin-left:49px;
+                            }
+                        }
+    </style>
 @endsection
 @section("script")
     <script src="{{ URL::asset('../js/script.js') }}"></script>

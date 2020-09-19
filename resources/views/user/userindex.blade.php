@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{URL::asset("plugins/overlayScrollbars/css/OverlayScrollbars.min.css")}}">
     <link rel="stylesheet" href="{{URL::asset("plugins/daterangepicker/daterangepicker.css")}}">
     <link rel="stylesheet" href="{{URL::asset("plugins/summernote/summernote-bs4.css")}}">
+
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>

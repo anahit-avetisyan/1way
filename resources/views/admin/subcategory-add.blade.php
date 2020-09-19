@@ -37,15 +37,15 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Անվանումը</label>
+                                    <label for="inputName">Անվանում</label>
                                     <input name="titleAM" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">Անվանումը</label>
+                                    <label for="inputName">Անվանում</label>
                                     <input name="titleRU" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">Անվանումը</label>
+                                    <label for="inputName">Անվանում</label>
                                     <input name="titleEN" type="text" id="inputName" class="form-control">
                                 </div>
 
@@ -72,9 +72,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <a href="#" class="btn btn-secondary">Cancel</a>
-                        <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+                    <div class="col-12 button-contollet-bottom">
+                        <a href="{{ URL::previous() }}" class="btn btn-secondary btn-first-back">Վերադառնալ</a>
+                        <input type="submit" value="Պահպանել (save)" class="btn btn-success float-right">
                     </div>
                 </div>
             </section>

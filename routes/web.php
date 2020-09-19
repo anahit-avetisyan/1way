@@ -162,6 +162,7 @@ Route::get('0/user.userindex',  function() {return view("user.userindex");})->na
 Route::group(['middleware' => ['auth','user'],'namespace' => 'admin'],function(){
     Route::get("0/user-product/1way/03{id}78", "UserProductController@index")->name("user-product");
     Route::get('0/user-product/create/1way/{category_id}','UserProductController@ajax');
+    Route::get('user-product-data/{id}','UserProductController@productData');
     Route::get("0/user-product/create/1way", "UserProductController@create")->name("user-product-create");
     Route::get('z/{category_id}','UserProductController@ajax');
     Route::get("0/user_product/edit/{id}/z/", "UserProductController@edit")->name("user-product-edit");

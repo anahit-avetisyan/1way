@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Projects</h1>
+                        <h1>Users</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Projects</li>
+                            <li class="breadcrumb-item active">Users</li>
                         </ol>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Projects</h3>
+                    <h3 class="card-title">Users</h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -49,11 +49,11 @@
                         <thead>
                         <tr>
                             <th style="width: 1%">#</th>
-                            <th>User Id</th>
-                            <th style="width: 20%">Name</th>
-                            <th style="width: 30%">UserType</th>
-                            <th>Email</th>
-                            <th>Created_at</th>
+                            <th>Id</th>
+                            <th style="width: 20%">Անուն</th>
+                            <th style="width: 30%"> Օգտագործողի տեսակը (User Type)</th>
+                            <th>Էլ․ հասցե (Email)</th>
+                            <th> Ստեղծվել է (created_at)</th>
                             <th style="width: 20%">#</th>
                         </tr>
                         </thead>
@@ -70,7 +70,7 @@
                                     <td style="padding: inherit;">
                                         <form  action="{{route('user.edit',$users->id)}}" method="get" >
                                             <button type="submit" data-toggle="tooltip" title="Edit User" class="btn btn-info btn-sm">
-                                                Edit
+                                                Փոփոխել
                                             </button>
                                         </form>
 

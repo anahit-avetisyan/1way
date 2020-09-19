@@ -95,7 +95,9 @@ class CategoryController extends Controller
     {
         $files = $request->except('_token','_method');
         $img = [];
+        $category = Category::where('id',$id)->first();
         if(isset($files['posters'])){
+            $img =  json_decode($category->posters, true);
             foreach ($files['posters'] as $file){
                 $imgName = rand(1,20). $file->getClientOriginalName();
                 array_push($img,$imgName);

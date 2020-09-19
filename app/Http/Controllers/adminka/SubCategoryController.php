@@ -19,7 +19,8 @@ class SubCategoryController extends Controller
     {
 
         $categories = Category::get("id");
-        $subcategorys = SubCategory::get();
+        $subcategorys = SubCategory::with('category')->get();
+
         return view('admin.subcategory',compact('subcategorys',"categories"));
     }
 

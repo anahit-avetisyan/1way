@@ -38,21 +38,21 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըAM</label>
+                                    <label for="inputName">Անվանում/AM</label>
                                     <input name="titleAM" value="{{$subcategorys->titleAM}}" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըRU</label>
+                                    <label for="inputName">Անվանում/RU</label>
                                     <input name="titleRU" value="{{$subcategorys->titleRU}}" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">ԱնվանումըEN</label>
+                                    <label for="inputName">Անվանում/EN</label>
                                     <input name="titleEN" value="{{$subcategorys->titleEN}}" type="text" id="inputName" class="form-control">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="category_list"  style="color: black">Ընտրել Կատեգորիան</label>
-                                    <select name="category_id"  class="form-control" id="category_list">
+                                    <select name="category_id"    class="form-control category-selected" id="category_list">
                                         <option selected disabled>Ընտրել Կատեգորիան</option>
                                         @isset($category)
                                             @foreach($category as $categorys)
@@ -73,9 +73,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <a href="#" class="btn btn-secondary">Cancel</a>
-                        <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+                    <div class="col-12 button-contollet-bottom">
+                        <a href="{{ URL::previous() }}" class="btn btn-secondary btn-first-back">Վերադառնալ</a>
+                        <input type="submit" value="Պահպանել (save)" class="btn btn-success float-right">
                     </div>
                 </div>
             </section>
@@ -83,4 +83,9 @@
         <!-- /.content -->
     </div>
 
+    <script>
+        var val="<?php echo $subcategorys->category_id; ?>";
+        console.log(val)
+        $(".category-selected").val(val)
+    </script>
 @endsection

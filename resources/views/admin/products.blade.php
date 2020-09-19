@@ -34,14 +34,14 @@
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <a href="{{route("product.create")}}">
-                                        <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Avelacnel</button>
+                                        <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Ավելացնել</button>
                                     </a></h3>
 
                             </div>
                             <div class="form-group brend-select-container">
-                                <label for="inputStatus">Band</label>
+                                <label for="inputStatus">Ապրանքանիշ (Brand)</label>
                                 <select name="brend_id" class="form-control select-brend"  >
-                                    <option selected value="">Band</option>
+                                    <option selected value=""></option>
                                     @isset($brends)
                                         @foreach($brends as $brend)
                                             <option value="{{$brend->user_id}}">{{$brend->title}}</option>
@@ -78,7 +78,7 @@
                                 Նկարը
                             </th>
                             <th style="width: 8%" class="text-center">
-                             Brand
+                             Ապրանքանիշ (Brand)
                             </th>
                             <th style="width: 8%" class="text-center">
                               Կատեգորիան
@@ -163,7 +163,7 @@
                             <td style="    padding: inherit;">
                                 <div style="display: flex">
                                 <form  action="{{route('product.edit',$product->id)}}" method="get" style="color: black;text-align: left">
-                                    <button class="btn waves-effect waves-light btn-rounded btn-warning" style="text-align: center;border-radius: 15px;outline: none">edit</button>
+                                    <button class="btn waves-effect waves-light btn-rounded btn-warning" style="text-align: center;border-radius: 15px;outline: none">Փոփոխել</button>
                                 </form>
                                 &nbsp;&nbsp;&nbsp;
                                 <form action="{{route('product.destroy',$product->id)}}" method="post" style="color: black;text-align: left">
@@ -178,7 +178,7 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <form action="{{route('product.top',$product->id)}}" method="post" style="color: black;text-align: left ">
                                         @csrf
-                                        <button class="btn waves-effect waves-light btn-rounded btn-success" style="text-align: center;border-radius: 15px;outline: none">ԱվելացնելԹՈՓ</button>
+                                        <button class="btn waves-effect waves-light btn-rounded btn-success" style="text-align: center;border-radius: 15px;outline: none">Ավելացնել ԹՈՓ</button>
                                     </form>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
 {{--                                    <button ></button>--}}
@@ -224,15 +224,15 @@
                                         <div class="col-md-12">
                                                 <div class="card-body">
                                                     <div class="form-group">
-                                                        <label for="inputName">Անվանումը</label>
+                                                        <label for="inputName">Անվանում</label>
                                                         <input name="titleAM" disabled type="text"  class="form-control product-name-am">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputName">ԱնվանումըRU</label>
+                                                        <label for="inputName">Անվանում/RU</label>
                                                         <input name="titleRU"  disabled type="text"   class="form-control product-name-ru">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputName">ԱնվանումըEN</label>
+                                                        <label for="inputName">Անվանում/EN</label>
                                                         <input name="titleEN" disabled  type="text" id="inputName" class="form-control product-name-en">
                                                     </div>
                                                     <div class="form-group">
@@ -253,12 +253,12 @@
                                                                placeholder="Add product description...">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputDescription">ՆկարագիրRU</label>
+                                                        <label for="inputDescription">Նկարագիր/RU</label>
                                                         <input name="descriptionRU" disabled type="text" class="form-control product-description-ru" id="product-description "
                                                                placeholder="Add product description...">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputDescription">ՆկարագիրEN</label>
+                                                        <label for="inputDescription">Նկարագիր/EN</label>
                                                         <input name="descriptionEN" disabled type="text" class="form-control product-description-en" id="product-description "
                                                                placeholder="Add product description...">
                                                     </div>
@@ -313,20 +313,20 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="inputDescription">Զեղջը</label>
+                                                        <label for="inputDescription">Զեղջ</label>
                                                         <input name="sale" disabled type="number"   class="form-control product-sale" id="product-description"
                                                         >
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputClientCompany">ԳինըAM</label>
+                                                        <label for="inputClientCompany">Գին/AM</label>
                                                         <input name="priceAM" disabled  type="text" id="inputClientCompany" class="form-control price-am">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputClientCompany">ԳինըRU</label>
+                                                        <label for="inputClientCompany">Գին/RU</label>
                                                         <input name="priceRU" disabled type="text" id="inputClientCompany" class="form-control price-ru">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputClientCompany">ԳինըEN</label>
+                                                        <label for="inputClientCompany">Գին/EN</label>
                                                         <input name="priceEN" disabled  type="text" id="inputClientCompany" class="form-control price-en">
                                                     </div>
                                                     <div class="form-group">
@@ -337,9 +337,9 @@
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputStatus">Brend</label>
+                                                        <label for="inputStatus">Ապրանքանիշ</label>
                                                         <select disabled name="brend_id" class="form-control product-brend" id="category_id">
-                                                            <option selected disabled>Brend</option>
+                                                            <option selected disabled>Ապրանքանիշ</option>
                                                             @isset($brends)
                                                                 @foreach($brends as $brend)
                                                                     <option value="{{$brend->id}}">{{$brend->title}}</option>
@@ -349,9 +349,9 @@
                                                     </div>
                                                     {{--                            {{dd($category)}}--}}
                                                     <div class="form-group">
-                                                        <label for="inputStatus">Կատեգորիան</label>
+                                                        <label for="inputStatus">Կատեգորիա</label>
                                                         <select disabled name="category_id" class="form-control product-category" id="category">
-                                                            <option selected disabled>Կատեգորիան</option>
+                                                            <option selected disabled>Կատեգորիա</option>
                                                             @isset($category)
                                                                 @foreach($category as $categories)
                                                                     <option value="{{$categories->id}}">{{$categories->titleAM}}</option>

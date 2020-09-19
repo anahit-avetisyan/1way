@@ -53,9 +53,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        {{--                    <button>dsfdfsd</button>--}}
-                        <input type="submit" value="Create new Porject" class="btn btn-success float-right">
+                    <div class="col-12 button-contollet-bottom">
+                        <a href="{{ URL::previous() }}" class="btn btn-secondary btn-first-back">Վերադառնալ</a>
+                        <input type="submit" value="Պահպանել (save)" class="btn btn-success float-right">
                     </div>
                 </div>
             </form>

@@ -67,8 +67,9 @@
                 </div>
     </div>
     <div class="row">
-        <div class="col-12">
-            <button   value="Create new Porject" class="btn btn-success float-right">Ավելացնել</button>
+        <div class="col-12 button-contollet-bottom">
+            <a href="{{ URL::previous() }}" class="btn btn-secondary btn-first-back">Վերադառնալ</a>
+            <button   value="Պահպանել (save)" class="btn btn-success float-right">Ավելացնել</button>
         </div>
     </div>
     </section>

@@ -260,7 +260,7 @@
                                     @endphp
                                     <div style="display: flex;align-items: center;width: 95%;justify-content: space-between;">
                                         <div>
-                                            <img  src="{{asset('images/'.$img[1])}}" style="height: 20px;">
+                                            <img  src="{{asset('images/'.$img[1])}}" style="height: 22px;width:22px;object-fit:contain">
                                             {{mb_substr($categ['category']->titleAM,0,12).".."}}
                                         </div>
                                         <div>

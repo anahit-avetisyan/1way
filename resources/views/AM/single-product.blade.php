@@ -121,30 +121,19 @@
                         </div>
                         <div class="col-lg-6 col-md-10">
                             <a style="text-decoration: none;color: #0d0735" href="{{route("AM.brand",["curse"=>$curse,"brend_id"=>$brands->user_id])}}">
-                                <p style="margin-left:-13px;font-family: Arial-Arm-Regular">
-                                    <span style="background-color: black;display: inline-block;border-radius: 50%;width: 15px;height: 15px;"></span>
+                                <div style="margin-left:-13px;font-family: Arial-Arm-Regular;align-items:center;display:flex;">
+                                    <span style="margin-right:5px;background-color: black;display: inline-block;border-radius: 50%;width: 15px;height: 15px;"></span>
                                     {{$brands->title}}
-                                </p>
+                                </div>
                             </a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xl-6 col-lg-7 col-md-9 col-12" id="single">
-{{--                            @php $img = json_decode($product->posters)--}}
-{{--                            @endphp--}}
-{{--                            <div class="imgdiv" style="background-image: url({{asset('images/'.$img[0])}})">--}}
-{{--                            </div>--}}
-{{--                            <div class="col-12 ">--}}
-{{--                                <span class="arrowslideleft1" style="margin-top: -15%;font-size: 29px;cursor: pointer;"><i class='fa fa-angle-left'></i></span>--}}
-{{--                                @foreach(json_decode($product->posters) as $key => $poster)--}}
-{{--                                    @if ($key < 4) <img class="miniprod1 miniproduct showimg " src="{{asset('images/'.$poster)}}" alt=" ">--}}
-{{--                                        @else--}}
-{{--                                        <img class="miniprod1 miniproduct miniprod2  hiddenimg " src="{{asset('images/'.$poster)}}" alt=" ">--}}
-{{--                                        @endif--}}
-{{--                                        @endforeach--}}
-{{--                                        <span class="arrowslide1" style="margin-top: -15%;cursor: pointer;"><i style="font-size: 29px;" class='fa fa-angle-right'></i></span>--}}
-{{--                            </div>--}}
-
+                            <div class="arrowMain">
+                                <span class="sliderArrow left">&#x2039;</span>
+                                <span class="sliderArrow right">&#x203A;</span>
+                            </div>
                             <div class="demo">
                                 <ul id="lightSlider">
                                     @php $img = json_decode($product->posters);
@@ -156,7 +145,7 @@
                                         </li>
                                     @else
                                         @foreach(json_decode($product->posters) as $poster)
-                                            <li data-thumb="{{asset('images/'.$poster)}}">
+                                            <li  data-thumb="{{asset('images/'.$poster)}}">
                                                 <img src="{{asset('images/'.$poster)}}" />
                                             </li>
                                         @endforeach
@@ -187,7 +176,7 @@
                                             @elseif ($curse == 2)
                                             {{round($finelPriceEN,1,1)}}$
                                             @elseif ($curse == 0)
-                                            {{round($finelPriceAM,-1,3)}} Դրամ
+                                            {{round($finelPriceAM,-1,3)}} Դր.
                                             @endif </span>
                                     </div>
                                     @if(isset($product->sale))
@@ -202,7 +191,7 @@
                                                     @elseif ($curse == 2)
                                                         {{$product->priceEN}}&nbsp;$
                                                     @elseif ($curse == 0)
-                                                        {{$product->priceAM}}&nbsp;Դրամ
+                                                        {{$product->priceAM}}&nbsp;Դր.
                                                     @endif</span>
                                             </div>
                                         </div>
@@ -258,13 +247,13 @@
                                     </div>
                                 </div>
                                 @endif
-                                <div class="col-xl-9 col-lg-12 col-sm-6 col-9" style="margin-left: -20px">
+                                <div class="col-xl-9 col-lg-12 col-sm-6 col-9" style="margin-left: -7px">
                                     <div class="row" style="justify-content: space-between;align-items: center">
                                         <div>
                                             <span style="background-color: white;">
                                                 <span class="minus" style="border-radius: 50px;border: 1px solid black;background-color: white;outline: none;padding: 2px 5px;cursor: pointer;"><i class="fa fa-minus" aria-hidden="true"></i></span>
                                             </span>
-                                            <input type="text" class="quantityRadioInput priceinp" style="width: 29px;text-align: center;" id="ciout">
+                                            <input type="text" class="quantityRadioInput priceinp" style="width: 29px;text-align: center;" id="ciout" value="1">
                                             <label for="ciout" class="quantityRadio"></label>
                                             <span class="mxvalue" style="display: none;">30</span>
                                             <span>
@@ -340,17 +329,18 @@
 
                             </div>
                         <div style="margin-top: 5%; ">
-                            <span style="font-family: Arial-Arm-Regular" name="descriptionAM">{{$product->descriptionAM}} </span>
+                            <p>Ապրանքի նկարագիր</p>
+                            <span style="font-family: Arial-Arm-Regular" name="descriptionAM"> {{\Illuminate\Support\Str::limit($product->descriptionAM,200)}} </span>
                         </div>
                     </div>
 
             <div style="margin-left: 18%;margin-top: 3%;margin-bottom: 6%;font-family: arialarmmedium; "><b> Նմանատիպ ապրանքներ</b></div>
                 <div class="col-lg-10 col-12 offset-lg-2">
                     <div class="col">
-                        <div class="row justify-content-between">
+                        <div class="row products">
                             @foreach ($like as  $product)
                                 @if ($product->sale == null)
-                                <div class="productItem mb-4">
+                                <div class="productItem mb-4 mr-lg-4 mr-3">
                                     <div>
                                         @php $img = json_decode($product->posters)
                                         @endphp
@@ -381,7 +371,7 @@
                                     </div>
                                 </div>
                                 @else
-                                    <div class="productItem mb-4">
+                                    <div class="productItem mb-4 mr-lg-4 mr-3">
                                         <div>
                                             <div class="saleNumber"  style="background-color: #072935;border-radius: 50%;color: white;height: 35px;width: 35px;padding: 5px 2px;float: right;margin-right: -14px;margin-top: -18px;">{{$product->sale}}%</div>
                                             @php $img = json_decode($product->posters)
@@ -432,15 +422,73 @@
                         </div>
                     </div>
                     <style>
-                        @media only screen and (max-width:374px) {
+                        @media only screen and (max-width:540px) {
                             .ItemSquare{
-                                width: 125px!important;
-                                height: 125px!important;
+                                width: 190px!important;
+                                height: 190px!important;
                             }
-
+                            .products{
+                                margin-left:10%;
+                            }
                         }
 
-                        @media only screen and (max-width:524px){
+                        @media only screen and (max-width:501px) {
+                            .ItemSquare{
+                                width: 170px!important;
+                                height: 170px!important;
+                            }
+                            .products{
+                                margin-left:7%;
+                            }
+                        }
+
+                        @media only screen and (max-width:443px) {
+                            .ItemSquare{
+                                width: 160px!important;
+                                height: 160px!important;
+                            }
+                            .products{
+                                margin-left:4%;
+                            }
+                        }
+                        @media only screen and (max-width:412px) {
+                            .ItemSquare{
+                                width: 150px!important;
+                                height: 150px!important;
+                            }
+                            .products{
+                                margin-left:2%;
+                            }
+                        }
+
+                        @media only screen and (max-width:380px) {
+                            .ItemSquare{
+                                width: 140px!important;
+                                height: 140px!important;
+                            }
+                            .products{
+                                margin-left:0%;
+                            }
+                        }
+
+                        @media only screen and (max-width:357px) {
+                            .ItemSquare{
+                                width: 130px!important;
+                                height: 130px!important;
+                            }
+                        }
+
+                        @media only screen and (max-width:357px) {
+                            .ItemSquare{
+                                width: 180px!important;
+                                height: 180px!important;
+                            }
+                            .productItem{
+                                margin-left: 49px;
+                            }
+                        }
+
+                        /* @media only screen and (max-width:524px){
                             .ItemSquare{
                                 width: 165px!important;
                                 height: 165px!important;
@@ -459,7 +507,7 @@
                                 width: 115px!important;
                                 height: 115px!important;
                             }
-                        }
+                        } */
                     </style>
                 </div>
                 </div>
