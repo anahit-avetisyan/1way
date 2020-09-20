@@ -108,7 +108,7 @@
     </div>
         @endsection
         @section("content")
-        <div class="col-lg-10 col-12">
+        <div class="col-lg-10 col-12 " style="padding-left:25px">
             @if(count($favorite) > 0)
             @foreach( $favorite as $favo)
                 <div style="border-top: 1px solid #edf2ed;">

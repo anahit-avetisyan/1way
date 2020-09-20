@@ -66,7 +66,7 @@
                         @endphp
                         <a href="{{route("user-product",$UserId)}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Ապրանքներ</p>
+                            <p>Ապրանք</p>
                         </a>
                     </li>
                     <li class="nav-item has-treeview">
@@ -103,12 +103,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Ապրանքներ</h1>
+                        <h1>Ապրանքանիշ</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Գլխավոր</a></li>
-                            <li class="breadcrumb-item active">Ապրանքներ</li>
+                            <li class="breadcrumb-item active">Ապրանքանիշ</li>
                         </ol>
                     </div>
                 </div>
@@ -132,9 +132,11 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
-                                    <a href="{{route("user-product-create")}}">
+                                   @if(@isset($brand) && count($brand)==0)
+                                    <a href="{{route("user-brand.create")}}">
                                         <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Ավելացնել</button>
                                     </a></h3>
+                                @endif
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -145,29 +147,11 @@
                                         <th style="width: 1%">
                                             #
                                         </th>
-                                        <th style="width: 1%">
-                                            id
-                                        </th>
                                         <th style="width: 8%">
                                             Անվանումը
                                         </th>
-                                        <th style="width: 8%">
-                                            Կոդ
-                                        </th>
-                                        <th style="width: 2%" class="text-center">
-                                            Գինը
-                                        </th>
-
-                                        {{--                            <th style="width: 8%" class="text-center">--}}
-                                        {{--                                Նկարագիր--}}
-                                        {{--                            </th>--}}
-
                                         <th style="width: 8%" class="text-center">
                                             Նկարը
-                                        </th>
-
-                                        <th style="width: 8%" class="text-center">
-                                            Կատեգորիան
                                         </th>
                                         <th style="width: 20%">
                                             #
@@ -175,115 +159,27 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @isset($products)
-                                        @foreach($products as $key=>$product)
+                                    @isset($brand)
+                                        @foreach($brand as $product)
                                             <tr>
-{{--                                                <td>--}}
-{{--                                                    {{$product->id}}--}}
-{{--                                                </td>--}}
-{{--                                                <td>--}}
-{{--                                                    <a>--}}
-{{--                                                        --}}{{--                                    {{dd($product)}}--}}
-{{--                                                        {{$product->titleAM}}--}}
-{{--                                                    </a>--}}
-{{--                                                    <br/>--}}
-{{--                                                    <a>--}}
-{{--                                                        {{$product->titleRU}}--}}
-{{--                                                    </a>--}}
-{{--                                                    <br>--}}
-{{--                                                    <a>--}}
-{{--                                                        {{$product->titleEN}}--}}
-{{--                                                    </a>--}}
-{{--                                                </td>--}}
-{{--                                                <td class="project-state">--}}
-{{--                                                    --}}{{--                                <span class="badge badge-success">--}}
-{{--                                                    --}}{{--                                    @if($product->availabilityAM)--}}
-{{--                                                    --}}{{--                                        Առկա է--}}
-{{--                                                    --}}{{--                                    @else--}}
-{{--                                                    --}}{{--                                        Պատվերով--}}
-{{--                                                    --}}{{--                                    @endif--}}
-{{--                                                    {{$product->priceAM}}&nbsp;&nbsp;դր--}}
-{{--                                                    <br>--}}
-{{--                                                    {{$product->priceRU}}&nbsp;&nbsp;руб--}}
-{{--                                                    <br>--}}
-{{--                                                    {{$product->priceEN}}&nbsp;&nbsp;$--}}
-{{--                                                    --}}{{--                                </span>--}}
-{{--                                                </td>--}}
-{{--                                                <td >--}}
-{{--                                                    <a href="">{{mb_substr($product->descriptionAM, 0, 20)}}</a>--}}
-{{--                                                    <br>--}}
-{{--                                                    <a href="">{{mb_substr($product->descriptionRU, 0, 20)}}</a>--}}
-{{--                                                    <br>--}}
-{{--                                                    <a href="">{{mb_substr($product->descriptionEN, 0, 20)}}</a>--}}
-{{--                                                </td>--}}
-{{--                                                <td>--}}
-{{--                                                    @foreach(json_decode($product->posters) as $poster)--}}
-{{--                                                        <img src="{{asset('images/'.$poster)}}" alt="{{$poster}}" width="60">--}}
-{{--                                                    @endforeach--}}
-{{--                                                </td>--}}
-                                                <td>
-                                                    {{$key+1}}
-                                                </td>
                                                 <td>
                                                     {{$product->id}}
                                                 </td>
                                                 <td>
-                                                    <a>
-                                                        {{--                                    {{dd($product)}}--}}
-                                                        {{mb_substr($product->titleAM,0,17)}}
-                                                    </a>
-                                                    <br/>
-                                                    <a>
-                                                        {{mb_substr($product->titleRU,0,17)}}
-                                                    </a>
-                                                    <br>
-                                                    <a>
-                                                        {{mb_substr($product->titleEN,0,17)}}
-                                                    </a>
+                                                    {{$product->title}}
                                                 </td>
                                                 <td>
-                                                    {{$product->code}}
-                                                </td>
-                                                <td class="project-state">
-                                                    {{--                                <span class="badge badge-success">--}}
-                                                    {{--                                    @if($product->availabilityAM)--}}
-                                                    {{--                                        Առկա է--}}
-                                                    {{--                                    @else--}}
-                                                    {{--                                        Պատվերով--}}
-                                                    {{--                                    @endif--}}
-                                                    {{$product->priceAM}}&nbsp;&nbsp;դր
-                                                    <br>
-                                                    {{$product->priceRU}}&nbsp;&nbsp;руб
-                                                    <br>
-                                                    {{$product->priceEN}}&nbsp;&nbsp;$
-                                                    {{--                                </span>--}}
-                                                </td>
-                                                {{--                            <td >--}}
-                                                {{--                                <a href="">{{mb_substr($product->descriptionAM, 0, 20)}}</a>--}}
-                                                {{--                                <br>--}}
-                                                {{--                                <a href="">{{mb_substr($product->descriptionRU, 0, 20)}}</a>--}}
-                                                {{--                                <br>--}}
-                                                {{--                                <a href="">{{mb_substr($product->descriptionEN, 0, 20)}}</a>--}}
-                                                {{--                            </td>--}}
-                                                <td>
-                                                    @php $img = json_decode($product->posters) @endphp
-                                                    <img src="{{asset('images/'.$img[0])}}" width="60">
-                                                </td>
-
-                                                <td>
-                                                    <?php $sdvs= \App\Category::where("id",$product->category_id)->get() ?>
-                                                    @foreach($sdvs as $fbgdfb)
-                                                        {{$fbgdfb->titleAM}}
+                                                    @foreach(json_decode($product->posters) as $poster)
+                                                        <img src="{{asset('images/'.$poster)}}" alt="{{$poster}}" width="60">
                                                     @endforeach
                                                 </td>
-                                                <td  class="action-field">
-                                                    <form  class="delete-button-table" action="{{route('user-product-edit',$product->id)}}" method="get" style="color: black;text-align: left">
+                                                <td class="action-field" >
+                                                    <form  class="delete-button-table" action="{{route('user-brand.edit',$product->id)}}" method="get" style="color: black;text-align: left">
                                                         <button class="btn waves-effect waves-light btn-rounded btn-warning" style="text-align: center;border-radius: 15px;outline: none">Փոփոխել</button>
                                                     </form>
-                                                    <br>
-                                                    <?php $user_id = Auth::user()->id  ?>
-                                                    <form action="{{route('user-product-destroy',["id"=>$product->id,"user_id"=>$user_id])}}" method="post" style="color: black;text-align: left">
+                                                    <form action="{{route('user-brand.destroy',$product->id)}}" method="post" style="color: black;text-align: left">
                                                         @csrf
+                                                        @method('DELETE')
                                                         <button class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none">Ջնջել</button>
                                                     </form>
                                                 </td>

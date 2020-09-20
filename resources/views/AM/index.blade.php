@@ -77,7 +77,7 @@
                                                 @endfor
                                                 <a class="carousel-control-prev" href="#demo" data-slide="prev">
                                                     <span class="sliderArrow">&#x2039;</span>
-                                                    
+
                                                 </a>
                                                 <a class="carousel-control-next" href="#demo" data-slide="next">
                                                     <span class="sliderArrow">&#x203A;</span>

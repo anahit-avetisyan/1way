@@ -183,8 +183,10 @@ class ChekoutController extends Controller
 //        $product->qunatity = $qunatity;
         // dd($product);
         $product->save();
-
-        return redirect()->route('AM.single',compact('id','curse'))->with(session()->flash('alert-success', 'Ավելացված է Զամբյուղում'));;
+        return response()->json([
+            'success' => true
+        ]);
+        //return redirect()->route('AM.single',compact('id','curse'))->with(session()->flash('alert-success', 'Ավելացված է Զամբյուղում'));;
     }
 //------------------------------------------------------------------------------
     public function StoreRU($id, $user_id) {

@@ -20,6 +20,7 @@ class FavoriteController extends Controller
     public function StoreAMDemo($id) {
         $favorite  = Product::where('id', $id)->get();
         $id = $id;
+
         return redirect()->route('AM.single',compact('id',"favorite"));
     }
     //========================================================================================
@@ -35,10 +36,11 @@ class FavoriteController extends Controller
         return redirect()->route('EN.single',compact('id',"favorite"));
     }
     //========================================================================================
-    public function StoreAM($id,$user_id,Request $request) {
+    public function StoreAM($id,$user_id,$curse,Request $request) {
+
         $favorite  = Product::where('id', $id)->get();
         $id = $id;
-        $curse = $request->curse;
+
         if (isset($check[0]->sale)){
             $saleNumber = $favorite[0]->sale * $favorite[0]->priceAM / 100;
             $productPrice = $favorite[0]->priceAM - $saleNumber;
@@ -51,6 +53,9 @@ class FavoriteController extends Controller
         $product->finalPrice = $productPrice;
         $product->product_id = $id;
         $product->save();
+        return response()->json([
+            'success' => true
+        ]);
         return redirect()->route('AM.single',compact('id','curse'))->with(session()->flash('alert-success', 'Ավելացված է'));;
 
     }

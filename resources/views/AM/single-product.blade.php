@@ -273,14 +273,14 @@
                                         </div>
                                         @if (isset(Auth::user()->id))
                                             <?php $user =  Auth::user()->id ?>
-                                                <form action="{{route('AM.checkout',["id"=>$product->id,"user_id"=>$user,"curse"=>$curse])}}" method="get">
-                                                    <div style="display: none">
-                                                        <input class="forSizeRadio" type="checkbox" name="size" value="1" />
-                                                        <input class="forColorRadio" type="checkbox" name="color" value="2" />
-                                                        <input class="forQuantityRadio" type="checkbox" name="quantity" value="3" />
-                                                    </div>
-                                                    <button style="background-color: #0d0735;border: 0;outline: none;height: 44px;width: 44px;margin-right: 2px;"><i style="color: #98f2fe;" class="fa fa-shopping-cart"></i></button>
-                                                </form>
+{{--                                                <form action="{{route('AM.checkout',["id"=>$product->id,"user_id"=>$user,"curse"=>$curse])}}" method="get">--}}
+{{--                                                    <div style="display: none">--}}
+{{--                                                        <input class="forSizeRadio" type="checkbox" name="size" value="1" />--}}
+{{--                                                        <input class="forColorRadio" type="checkbox" name="color" value="2" />--}}
+{{--                                                        <input class="forQuantityRadio" type="checkbox" name="quantity" value="3" />--}}
+{{--                                                    </div>--}}
+                                                    <button class="save-data-cart" data-id="{{$product->id}}" data-user="{{$user}}" data-curse="{{$curse}}" style="background-color: #0d0735;border: 0;outline: none;height: 44px;width: 44px;margin-right: 2px;"><i style="color: #98f2fe;" class="fa fa-shopping-cart"></i></button>
+{{--                                                </form>--}}
                                             @else
                                             <a href="{{route('login.login',$curse)}}">
                                                 <button style="background-color: #0d0735;border: 0;outline: none;height: 44px;width: 44px;margin-right: 2px;">
@@ -290,16 +290,16 @@
                                             @endif
                                             @if (isset(Auth::user()->id))
                                              <?php $user =  Auth::user()->id ?>
-                                            <form action="{{route('AM.favorite-store',[$product->id,$user,"curse"=>$curse])}}" method="get">
+{{--                                            <form action="{{route('AM.favorite-store',[$product->id,$user,"curse"=>$curse])}}" method="get">--}}
 {{--                                                <div style="display: none">--}}
 {{--                                                <input class="checkBoxer-2" type="radio" name="check2" id="" value="1" />--}}
 {{--                                                <input class="checkBoxer-2" type="radio" name="check2" id="" value="2" />--}}
 {{--                                                <input class="checkBoxer-2" type="radio" name="check2" id="" value="3" />--}}
 {{--                                                </div>--}}
-                                                <button style="background-color: #0d0735;border: 0;outline: none;height: 44px;width: 44px">
+                                                <button data-id="{{$product->id}}" data-user="{{$user}}" data-curse="{{$curse}}"  class="make-favorite" style="background-color: #0d0735;border: 0;outline: none;height: 44px;width: 44px">
                                                     <i style="color: #98f2fe;" class="fa fa-heart"></i>
                                                 </button>
-                                            </form>
+{{--                                            </form>--}}
                                             @else
                                             <a href="{{route('login.login',$curse)}}">
                                             <button style="background-color: #0d0735;border: 0;outline: none;height: 44px;width: 44px">
@@ -314,11 +314,19 @@
                                 @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                                     @if(Session::has('alert-' . $msg))
                                         <div class="alert alert-{{ $msg }}" style="background-color: #0d0735;color: #98f2fe;position: absolute;width: 71%;height: 43px;z-index: 1;display: flex;margin-top: 5px;align-items: center;justify-content: center;opacity: 1;">
-                                            <span style="white-space: normal;position: absolute;padding-top: 2px;">{{ Session::get('alert-' . $msg) }}</span>
+                                            <span   style="white-space: normal;position: absolute;padding-top: 2px;">{{ Session::get('alert-' . $msg) }}</span>
 {{--                                            <a href="#" class="close" data-dismiss="alert" aria-label="close" style="color: #98f2fe;">&times;</a>--}}
                                         </div>
                                     @endif
                                 @endforeach
+                            </div>
+                            <div class="flash-message-default" style="max-height: 100px;margin-left: 4%">
+
+                                        <div    style="background-color: #0d0735;color: #98f2fe;position: absolute;width: 71%;height: 43px;z-index: 1;display: flex;margin-top: 5px;align-items: center;justify-content: center;opacity: 1;">
+                                            <span class="mssage-back" style="white-space: normal;position: absolute;padding-top: 2px;"></span>
+                                            {{--                                            <a href="#" class="close" data-dismiss="alert" aria-label="close" style="color: #98f2fe;">&times;</a>--}}
+                                        </div>
+
                             </div>
                                                 <div class="col-12 delivery1 " style="margin-top: 6%; ">
                                                     <h5 class="delivery ">Առաքում՝ Երևանում ԱՆՎՃԱՐ</h5>
@@ -422,6 +430,9 @@
                         </div>
                     </div>
                     <style>
+                        .flash-message-default {
+                            display: none;
+                        }
                         @media only screen and (max-width:540px) {
                             .ItemSquare{
                                 width: 190px!important;
@@ -517,5 +528,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{{ URL::asset('js/lightslider.js') }}"></script>
     <script src="{{ URL::asset('js/single.js') }}"></script>
+    <script src="{{ URL::asset('js/custom.js') }}"></script>
 @endsection
 

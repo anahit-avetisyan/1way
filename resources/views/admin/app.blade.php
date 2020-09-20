@@ -34,7 +34,7 @@
             </a>
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-header">ԲԱՂԱԴՐԻՉՆԵՐԸ</li>
+                    <li class="nav-header">ԲԱՂԱԴՐԻՉՆԵՐ</li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
@@ -79,7 +79,7 @@
                             <li class="nav-item">
                                 <a href="{{route("promo.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Promo</p>
+                                    <p>Գովազդ (Promo)</p>
                                 </a>
                             </li>
                         </ul>
@@ -87,17 +87,16 @@
                             <li class="nav-item">
                                 <a href="{{route("govazd.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Promo(SLIDER)</p>
+                                    <p>Գովազդ (Promo(SLIDER))</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-header">Users</li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Գլխավոր
+                                Օգտատերեր
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -105,7 +104,7 @@
                             <li class="nav-item">
                                 <a href="{{route("user.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>User</p>
+                                    <p>Օգտատերեր</p>
                                 </a>
                             </li>
 

@@ -27,6 +27,81 @@ class UserProductController extends Controller
 //        dd($products);
         return view('user.user-products',compact('products',"subcategory","top","category"));
     }
+
+    public function getUserBrand($id)
+
+    {
+        $brand= Brend::where("user_id",$id)->get();
+
+        return view('user.user-brand',compact('brand'));
+    }
+
+    public function deleteBrand($id)
+
+    {
+        Brend::where("id",$id)->delete();
+        $brand= Brend::where("user_id",$id)->get();
+        $user = Auth::user()->id;
+        return redirect()->route('user-brand',[$user]);
+
+    }
+
+    public function editUserBrand($id)
+    {
+        $brand = Brend::find($id);
+        return view('user.user-brand-edit',compact('brand'));
+    }
+    public function updateUserBrand($id,Request $request)
+    {
+        $files = $request->except('_token','_method');
+        $img = [];
+        if(isset($files['posters'])){
+            foreach ($files['posters'] as $file){
+                $imgName = rand(1,20). $file->getClientOriginalName();
+                array_push($img,$imgName);
+                $file->move(public_path() . '/images/',$imgName);
+            }
+            $files['posters']= json_encode($img);
+        }
+//        $request->title = fill()
+        $prod = Brend::find($id);
+        $user = Auth::user()->id;
+        $prod->update($files);
+        return redirect()->route('user-brand',[$user]);
+    }
+
+    public function createUserBrand()
+    {
+        $user = User::where("xanut","xanut")->get();
+        $brand = Brend::all();
+
+        return view('user.user-brand-add',compact('brand',"user"));
+    }
+    public function storeUserBrand(Request $request)
+    {
+
+        $input= $request->all();
+        if($request->hasFile('posters')){
+            $files = $request->file('posters');
+            $image = [];
+            foreach ($files as $file ) {
+                $file_name = rand(1,9999).$file->getClientOriginalName();
+                array_push($image,$file_name);
+                $file->move(public_path() . '/images/', $file_name);
+            }
+            $input['posters'] = json_encode($image);
+
+        }else{
+            return redirect()->back();
+        }
+        $product = new Brend();
+        $user = Auth::user()->id;
+        $input['user_id'] = $user;
+        $product->fill($input);
+        $product->save();
+        return redirect()->route('user-brand',[$user]);
+
+    }
     public function create()
     {
         $category = Category::get();

@@ -41,8 +41,7 @@ class BrendController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-//        dd($request);
+
         $input= $request->all();
         if($request->hasFile('posters')){
             $files = $request->file('posters');

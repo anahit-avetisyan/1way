@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Ապրանքներ</h1>
+                        <h1>Թոփ Ապրանքներ</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Գլխավոր</a></li>
-                            <li class="breadcrumb-item active">Ապրանքներ</li>
+                            <li class="breadcrumb-item active">Թոփ Ապրանքներ</li>
                         </ol>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <a href="{{route("product.create")}}">
-                                        <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Ավելացնել Ապրանք</button>
+                                        <button  class="btn waves-effect waves-light btn-rounded btn-danger" style="text-align: center;border-radius: 15px;outline: none;background-color: #00ad5f;border-color:#00ad5f ">Ավելացնել</button>
                                     </a></h3>
                             </div>
                             <!-- /.card-header -->

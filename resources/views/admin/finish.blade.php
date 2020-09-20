@@ -63,11 +63,9 @@
                                             Վճարման եղանակ
                                         </th>
                                         <th style="width: 8%" class="text-center">
-                                            Կատեգորիան
-                                        </th>
-                                        <th style="width: 20%">
                                             #
                                         </th>
+
                                     </tr>
                                     </thead>
                                     <tbody>

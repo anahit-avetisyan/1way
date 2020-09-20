@@ -57,9 +57,9 @@
                         @php
                             $UserId = Auth::user()->id;
                         @endphp
-                        <a href="{{route("user-product",$UserId)}}" class="nav-link">
+                        <a href="{{route("user-brand",$UserId)}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Logo</p>
+                            <p>Ապրանքանիշ</p>
                         </a>
                     </li>
                     <li class="nav-item">

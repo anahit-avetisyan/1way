@@ -50,7 +50,7 @@
             </div>
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-header">ԲԱՂԱԴՐԻՉՆԵՐԸ</li>
+                    <li class="nav-header">ԲԱՂԱԴՐԻՉՆԵՐ</li>
                     <li class="nav-item has-treeview">
                         @php
                             $UserId = Auth::user()->id;
@@ -66,7 +66,7 @@
                         @endphp
                         <a href="{{route("user-product",$UserId)}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Logo</p>
+                            <p>Ապրանքնաիշ</p>
                         </a>
                     </li>
                     <li class="nav-item">
