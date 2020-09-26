@@ -162,11 +162,7 @@
                                     <h6 class="card-subtitle mb-2 text-muted" style="margin-left: -27px;font-family: Arial-Arm-Regular" name="code">Կոդ {{$product->code}}</h6>
                                 </div>
                                 <div class="col-6">
-                                    <p class="card-text" style="margin-left: -27px;"><i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i></p>
+                                    <div id="rateYo" data-id="{{$product->id}}"></div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6  order-lg-1 order-2">
@@ -529,5 +525,32 @@
     <script src="{{ URL::asset('js/lightslider.js') }}"></script>
     <script src="{{ URL::asset('js/single.js') }}"></script>
     <script src="{{ URL::asset('js/custom.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    <script>
+
+
+        var rate = "<?php echo $rate; ?>";
+        $("#rateYo").rateYo({
+            rating: rate
+        });
+
+            $("#rateYo").rateYo()
+                .on("rateyo.set", function (e, data) {
+                    var id = $("#rateYo").data().id
+
+                    $.ajax({
+                        url: '/rating/' + id + '/' + data.rating  ,
+                        type: "get",
+                        dataType: "json",
+                        success: function (data) {
+
+                            if (data.success == true) {
+
+                            }
+                        }
+                    })
+                });
+
+    </script>
 @endsection
 

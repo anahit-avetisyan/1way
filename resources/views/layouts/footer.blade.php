@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/lightslider.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{URL::asset("dist/css/custom.css")}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
     <meta name="title" content="1way.am — Հայաստանում №1 առցանց առևտրի հարթակը.">
     <meta name="description" content="1way.am համարվում է Հայաստանում №1 առցանց առևտրի հարթակը:1way.am-ում դուք կգտնեք ցանկացած տեսակի ապրանք մատչելի գներով և բարձր որակով">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -250,7 +251,7 @@
 
 <div class="container mt-3 mt-md-4 productContainer">
     <div class="row">
-        <div class="col-lg-2 d-none d-lg-flex categoryHover" style="height: 300px!important;margin-top: -8px;justify-content:space-evenly;">
+        <div class="col-lg-2 d-none d-lg-flex categoryHover" style="height:450px!important ;margin-top: -8px;justify-content:space-evenly;">
             <nav class="nav">
                 @foreach($categoriesArr as $categ)
                     <div class="items">
@@ -418,6 +419,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js " integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI " crossorigin="anonymous "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 @yield("script")
 <script src="https://kit.fontawesome.com/7e743dcdbd.js" crossorigin="anonymous"></script>
 <script src="{{ URL::asset('../js/navbars.js') }}"></script>

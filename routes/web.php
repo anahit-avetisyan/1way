@@ -13,6 +13,8 @@
 //------------------------------------------------------------------------------
 Route::get('/',"IndexController@AMppp")->name("AM.ppp")->where('curse', '0');
 Route::get('/{curse}',"IndexController@AMindex")->name("AM.index");
+Route::get('/rating/{id}/{rate}',"ProductRatingController@rate") ;
+Route::get('/get-rating/{id}',"ProductRatingController@getProductRate") ;
 //Route::get('/{curse}/ru',"IndexController@RUindex")->name("RU.index")->where('curse', '[0-9]+');
 //Route::get('/{curse}/en',"IndexController@ENindex")->name("EN.index")->where('curse', '[0-9]+');
 Route::get('/searchIndex/{curse}',"IndexController@searchAM")->name("AM.search");
@@ -136,6 +138,7 @@ Route::group(['middleware' => ['auth','admin'],'namespace' => 'adminka'],functio
     Route::resource('0/category','CategoryController');
     Route::get('category-down/{id}','CategoryController@down')->name('category.down');
     Route::get('category-up/{id}','CategoryController@up')->name('category.up');
+    Route::get('/product/ratings','ProductController@ratingData')->name('rating.product');
     Route::resource('0/product','ProductController');
     Route::get('/product/img-sort/{id}/{imgId}/{sort}','ProductController@sortOrderImg');
     Route::get('/product/img-delete/{id}/{imgId}','ProductController@deleteImg');

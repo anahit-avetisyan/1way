@@ -37,7 +37,7 @@ class IndexController extends Controller
         {
             $categoryArr = [
                 'category' => $category,
-                'subcategory' => SubCategory::get()->where('category_id', $category->id),
+                'subcategory' => SubCategory::orderby('is_sort','ASC')->get()->where('category_id', $category->id),
             ];
             array_push($categoriesArr,$categoryArr);
         }

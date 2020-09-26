@@ -177,6 +177,12 @@
                                     <p>Ապրանքանիշ</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route("rating.product")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Գնահատական</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <br><br><br><br>

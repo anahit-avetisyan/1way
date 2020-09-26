@@ -5,12 +5,14 @@ namespace App\Http\Controllers\adminka;;
 use App\Brend;
 use App\Category;
 use App\Product;
+use App\ProductRating;
 use App\SubCategory;
 use App\Top;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Validator;
 use function Sodium\add;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -275,6 +277,13 @@ class ProductController extends Controller
 
         ], 200); // Status code here
 
+    }
+
+
+    public function ratingData()
+    {
+        $products = ProductRating::with('product')->groupBy('product_id')
+            ->get();
     }
     public function sortOrderImg($id,$imgId,$sort)
     {

@@ -211,16 +211,24 @@
                         </div>
                         <div style=" padding: 0px 22px; ">
                             <b> <p  class="card-title ">Վճարման եղանակ</p></b>
-                            <input type="radio" name="payment" value="0" id="male" name="checkout" checked>
+                            <input type="radio" name="payment" value="0" id="male" name="checkout" class="checkout-input" checked>
                             <label for="male">Visa/MasterCard/ArCa</label><br>
-                            <input type="radio" name="payment" value="1" id="female" name="checkout">
+                            <input type="radio" name="payment" value="1" id="female" class="checkout-input" name="checkout">
                             <label for="female">Idram</label><br>
-                            <input type="radio" name="payment" value="2" id="other" name="checkout">
+                            <input type="radio" name="payment" value="2" id="other" class="checkout-input" name="checkout">
                             <label for="other">Կանխիկ</label><br>
 
                         </div>
-
-                    <form action="https://money.idram.am/payment.aspx" method="POST">
+                    <div class="cash-form-submit"> <button style="width:'fit-content';color: white;background-color: blue;border: none;outline: none;float:right;padding: 8px 14px; ">submit</button></div>
+                    <form class="ameria-form-submit" action="https://money.idram.am/payment.aspx" method="POST">
+                        <input type="hidden" name="EDP_LANGUAGE" value="AM">
+                        <input type="hidden" name="EDP_REC_ACCOUNT" value="110000439">
+                        <input type="hidden" name="EDP_DESCRIPTION" value="{{$check->descriptionAM}}">
+                        <input type="hidden" name="EDP_AMOUNT" value="{{round($finelPriceAM * $quantity + 300,-2)}}">
+                        <input type="hidden" name="EDP_BILL_NO" value=" ">
+                        <input type="submit" style="color: white;background-color: blue;border: none;outline: none;float:right;padding: 8px 14px; " value="submit">
+                    </form>
+                    <form class="idram-form-submit" action="https://money.idram.am/payment.aspx" method="POST">
                         <input type="hidden" name="EDP_LANGUAGE" value="AM">
                         <input type="hidden" name="EDP_REC_ACCOUNT" value="110000439">
                         <input type="hidden" name="EDP_DESCRIPTION" value="{{$check->descriptionAM}}">
@@ -237,22 +245,47 @@
 @section("script")
     <script>
         $(document).ready(function () {
+
+
+            $('.checkout-input').on('change',function () {
+                console.log($(this).val())
+                var value = $(this).val()
+                if(value==0){
+                    $('.cash-form-submit').css('display','none')
+                    $('.idram-form-submit').css('display','none')
+                    $('.ameria-form-submit').css('display','block')
+                }
+                if(value==1){
+                    $('.cash-form-submit').css('display','none')
+                    $('.idram-form-submit').css('display','block')
+                    $('.ameria-form-submit').css('display','none')
+                }
+                if(value==2){
+                    $('.cash-form-submit').css('display','block')
+                    $('.idram-form-submit').css('display','none')
+                    $('.ameria-form-submit').css('display','none')
+                }
+            })
+
             $('.phone-number').on('change',function () {
                 String.prototype.isNumber = function(){return /^\d+$/.test(this);}
                 var input = $(this).val()
 
                 if(input.substr(4,input.length).isNumber() == false){
+                    $('.numError').text('Խնդրում ենք մուտքագրեք միայն թվանշաններ')
+                }else{
+                    $('.numError').text('')
+                    if(input.length>12){
+                        var newVal =''
+                        newVal = input.substr(0,12)
+                        if(input.substr(4,1)==0){
+                            newVal =  input.substr(0,4) + input.substr(5,12)
+                        }
+                        $('.phone-number').val(newVal)
 
-                }
-                if(input.length>12){
-                    var newVal =''
-                    newVal = input.substr(0,12)
-                    if(input.substr(4,1)==0){
-                        newVal =  input.substr(0,4) + input.substr(5,12)
                     }
-                    $('.phone-number').val(newVal)
-                    console.log(newVal)
                 }
+
             })
 
         })

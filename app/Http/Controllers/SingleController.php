@@ -11,6 +11,7 @@ use App\Header;
 use App\IndexText;
 use App\Logo;
 use App\Product;
+use App\ProductRating;
 use App\Promo;
 use App\Slider;
 use App\Top;
@@ -42,9 +43,12 @@ class SingleController extends Controller
         $check = Chekout::get();
         $salePriceTop = Top::where('id',$id)->first();
         $salePrice = Product::where('id',$id)->first();
-        $brands = Brend::where("user_id",$salePrice->brend_id)->first();
-        $categ = Category::where("id",$salePrice->category_id)->first();
-        $subcateg = SubCategory::where("id",$salePrice->subcategory_id)->first();
+        if(isset($salePrice)){
+            $brands = Brend::where("user_id",$salePrice->brend_id)->first();
+            $categ = Category::where("id",$salePrice->category_id)->first();
+            $subcateg = SubCategory::where("id",$salePrice->subcategory_id)->first();
+        }
+
 //        dd($subcateg);
         if ($salePriceTop != null) {
             if ($salePriceTop->sale == null) {
@@ -54,6 +58,7 @@ class SingleController extends Controller
                 $finelPriceAM = $salePriceTop->priceAM - $saleNumber;
             }
         } else {
+
             if ($salePrice->sale == null) {
                 $finelPriceAM = $salePrice->priceAM;
             }else {
@@ -107,8 +112,9 @@ class SingleController extends Controller
         $header = Header::get();
         $logo = Logo::get();
         $sliders = Slider::get();
+        $rate = ProductRating::where('product_id',$id)->avg('rate');
         return view("AM.single-product",
-            compact("products","header","categ","subcateg","brands",'finelPriceRU',"curse","idProduct","logo","sliders","footer","contact","text","categoriesArr","promo","product","finelPriceAM","finelPriceEN","check","like"));
+            compact("products","header","categ","rate","subcateg","brands",'finelPriceRU',"curse","idProduct","logo","sliders","footer","contact","text","categoriesArr","promo","product","finelPriceAM","finelPriceEN","check","like"));
     }
     public function RUsingle($id,Request $request)
     {
