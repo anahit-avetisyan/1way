@@ -63,21 +63,21 @@
                                 <span class="quantity1" style="color: red"></span>
                             </div>
                             <div class="form-group">
-                                <label for="inputDescription">Նկարագիր (Max.255 նիշ)</label>
-                                <input name="descriptionAM" value="{{ old('descriptionAM') }}" type="text" class="form-control descriptionAM" id="product-description "
-                                       placeholder="Add product description...">
+                                <label for="inputDescription">Նկարագիր (Max.3000 նիշ)</label>
+                                <textarea  name="descriptionAM" value="{{ old('descriptionAM') }}" type="textarea" class="form-control descriptionAM" id="product-description "
+                                           placeholder="Add product description..."></textarea>
                                 <span class="descAMerror" style="color: red"></span>
                             </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">Նկարագիր/RU (Max.255 նիշ)</label>
-                                    <input name="descriptionRU" value="{{ old('descriptionRU') }}" type="text" class="descriptionRU form-control" id="product-description"
-                                           placeholder="Add product description...">
+                                    <label for="inputDescription">Նկարագիր/RU (Max.3000 նիշ)</label>
+                                    <textarea  name="descriptionRU" value="{{ old('descriptionRU') }}" type="textarea" class="descriptionRU form-control" id="product-description"
+                                               placeholder="Add product description..."></textarea>
                                     <span class="descRUerror" style="color: red"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputDescription">Նկարագիր/EN (Max.255 նիշ)</label>
-                                    <input name="descriptionEN" value="{{ old('descriptionEN') }}" type="text" class="descriptionEN form-control" id="product-description"
-                                           placeholder="Add product description...">
+                                    <label for="inputDescription">Նկարագիր/EN (Max.3000 նիշ)</label>
+                                    <textarea  name="descriptionEN" value="{{ old('descriptionEN') }}"   class="descriptionEN form-control" id="product-description"
+                                               placeholder="Add product description..."></textarea>
                                     <span class="descENerror" style="color: red"></span>
                                 </div>
                                 <div class="form-group">
@@ -97,7 +97,7 @@
                                             <option value="Տարիք">Տարիք</option>
                                             <option class="etc">Այլ․․․</option>
                                         </select>
-                                            <input id="fvefrbve" type="text" name="size[]" placeholder="բլա բլա բլա">
+                                            <input id="fvefrbve" type="text" name="size[]" placeholder=" ">
                                             <span class="categoryAdd" style="cursor: pointer;background-color: green;padding: 4px 10px;color: white;font-weight: bold;font-size: 17px;border-radius: 8px;">+</span>
                                             <span class="categoryRemove" style="cursor: pointer;background-color: red;padding: 4px 10px;color: white;font-weight: bold;font-size: 17px;border-radius: 8px;">-</span>
                                     </div>
@@ -143,11 +143,11 @@
                                 <input name="priceAM" type="text" id="inputClientCompany" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputClientCompany">Գին/AM</label>
+                                <label for="inputClientCompany">Գին/RU</label>
                                 <input name="priceRU" type="text" id="inputClientCompany" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="inputClientCompany">Գին/AM</label>
+                                <label for="inputClientCompany">Գին/EN</label>
                                 <input name="priceEN" type="text" id="inputClientCompany" class="form-control">
                             </div>
                             <div class="form-group">
@@ -206,6 +206,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
        $('select[name="category_id"]').on("change",function () {
           var category_id = $(this).val();
           if(category_id){

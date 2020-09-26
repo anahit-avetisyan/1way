@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Validator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CategoryController extends Controller
 {
@@ -18,7 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categorys= Category::orderby('id','DESC')->get();
+        $categorys= Category::orderby('is_sort','ASC')->get();
         return view('admin.category',compact('categorys'));
     }
 
@@ -31,6 +32,31 @@ class CategoryController extends Controller
     {
         return view('admin.category-add');
     }
+
+    public function up($id)
+    {
+
+        $category = Category::where('id',$id)->first();
+        $categorySort = $category->is_sort ;
+        $categoryChanged = Category::where('is_sort',$categorySort+1)->first();
+
+        Category::where('id',$id)->update(['is_sort' => $categorySort +1]);
+        Category::where('id',$categoryChanged->id)->update(['is_sort' => $categorySort]);
+        $categorys= Category::orderby('is_sort','ASC')->get();
+        return view('admin.category',compact('categorys'));
+
+    }
+    public function down($id)
+    {
+        $category = Category::where('id',$id)->first();
+        $categorySort = $category->is_sort ;
+        $categoryChanged = Category::where('is_sort',$categorySort-1)->first();
+
+        Category::where('id',$id)->update(['is_sort' => $categorySort -1]);
+        Category::where('id',$categoryChanged->id)->update(['is_sort' => $categorySort]);
+        $categorys= Category::orderby('is_sort','ASC')->get();
+        return view('admin.category',compact('categorys'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -40,21 +66,28 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $input= $request->except('_token');
+
         if($request->hasFile('posters')){
             $files = $request->file('posters');
             $image = [];
             foreach ($files as $file ) {
                 $file_name = rand(1,9999).$file->getClientOriginalName();
                 array_push($image,$file_name);
-                $file->move(public_path() . '/images/', $file_name);
+                $image_resize = Image::make($file->getRealPath());
+                $image_resize->resize(300, 300);
+                $image_resize->save(public_path('images/' .$file_name));
             }
             $input['posters'] = json_encode($image);
         }else{
             return redirect()->back();
         }
-//        dd();
+
         $product = new Category();
+        $categories = Category::orderby('is_sort','DESC')->first();
+
+
         $product->fill($input);
+        $product->is_sort = $categories->is_sort + 1;
         $product->save();
         return redirect()->route('category.index');
     }
@@ -101,7 +134,10 @@ class CategoryController extends Controller
             foreach ($files['posters'] as $file){
                 $imgName = rand(1,20). $file->getClientOriginalName();
                 array_push($img,$imgName);
-                $file->move(public_path() . '/images/',$imgName);
+                $image_resize = Image::make($file->getRealPath());
+                $image_resize->resize(300, 300);
+                $image_resize->save(public_path('images/' .$imgName));
+
             }
             $files['posters']= json_encode($img);
         }

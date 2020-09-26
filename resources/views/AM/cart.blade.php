@@ -202,7 +202,7 @@
                             <span class="nameError " style="color: red; "></span>
                             <input type="text" name="surname" class="mt-2 surname " placeholder="Ազգանուն ">
                             <span class="surnameError " style="color: red; "></span>
-                            <input type="number" name="phone" class="mt-2 num " placeholder="Հեռախոսահամար ">
+                            <input type="text" name="phone" class="mt-2 num phone-number" value="+374" placeholder="Հեռախոսահամար ">
                             <span class="numError " style="color: red; "></span>
                             <input type="text" name="city" class=" mt-2 city " placeholder="Քաղաք ">
                             <span class="cityError " style=" color: red; "></span>
@@ -219,6 +219,7 @@
                             <label for="other">Կանխիկ</label><br>
 
                         </div>
+
                     <form action="https://money.idram.am/payment.aspx" method="POST">
                         <input type="hidden" name="EDP_LANGUAGE" value="AM">
                         <input type="hidden" name="EDP_REC_ACCOUNT" value="110000439">
@@ -234,6 +235,29 @@
     </div>
 @endsection
 @section("script")
+    <script>
+        $(document).ready(function () {
+            $('.phone-number').on('change',function () {
+                String.prototype.isNumber = function(){return /^\d+$/.test(this);}
+                var input = $(this).val()
+
+                if(input.substr(4,input.length).isNumber() == false){
+
+                }
+                if(input.length>12){
+                    var newVal =''
+                    newVal = input.substr(0,12)
+                    if(input.substr(4,1)==0){
+                        newVal =  input.substr(0,4) + input.substr(5,12)
+                    }
+                    $('.phone-number').val(newVal)
+                    console.log(newVal)
+                }
+            })
+
+        })
+
+    </script>
     <script src="{{URL::asset("js/cart.js") }}"></script>
 @endsection
 

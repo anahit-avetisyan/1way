@@ -32,7 +32,7 @@
                 </div>
             </div>
             </a>
-            <nav class="mt-2">
+            <nav class="mt-3">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-header">ԲԱՂԱԴՐԻՉՆԵՐ</li>
                     <li class="nav-item has-treeview">
@@ -67,19 +67,19 @@
                                 </a>
                             </li>
                         </ul>
-{{--                        <ul class="nav nav-treeview">--}}
-{{--                            <li class="nav-item">--}}
-{{--                                <a href="{{route("curse.index")}}" class="nav-link">--}}
-{{--                                    <i class="far fa-circle nav-icon"></i>--}}
-{{--                                    <p>Curse</p>--}}
-{{--                                </a>--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
+                        {{--                        <ul class="nav nav-treeview">--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="{{route("curse.index")}}" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Curse</p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                        </ul>--}}
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route("promo.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Գովազդ (Promo)</p>
+                                    <p>Գավազդ (Promo)</p>
                                 </a>
                             </li>
                         </ul>
@@ -87,7 +87,7 @@
                             <li class="nav-item">
                                 <a href="{{route("govazd.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Գովազդ (Promo(SLIDER))</p>
+                                    <p>Գավազդ (Promo(SLIDER))</p>
                                 </a>
                             </li>
                         </ul>
@@ -110,12 +110,11 @@
 
                         </ul>
                     </li>
-                    <li class="nav-header">Վաճաոված ԱՊՐԱՆՔՆԵՐ</li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Գլխավոր
+                                Ապրանքներ
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -123,18 +122,17 @@
                             <li class="nav-item">
                                 <a href="{{route("finish.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Products</p>
+                                    <p class="header-text">Վաճաոված ապրանքներ</p>
                                 </a>
                             </li>
 
                         </ul>
                     </li>
-                    <li class="nav-header">Տեսականի</li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Գլխավոր
+                                Տեսականի
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -142,31 +140,31 @@
                             <li class="nav-item">
                                 <a href="{{route("product.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Products</p>
+                                    <p>Արտադրանք</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route("category.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Categories</p>
+                                    <p>Կատեգորիա</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route("subcategory.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>SubCategories</p>
+                                    <p>Ենթակատեգորիա</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route("product.indexTop")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Products</p>
+                                    <p>Թոփ Արտադրանք</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route("brand.index")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Brand</p>
+                                    <p>Ապրանքանիշ</p>
                                 </a>
                             </li>
                         </ul>

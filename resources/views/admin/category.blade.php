@@ -36,10 +36,10 @@
                             <th style="width: 1%">
                                 #
                             </th>
-                            <th style="width: 20%">
+                            <th style="width: 15%">
                                 Անվանում/AM
                             </th>
-                            <th style="width: 30%">
+                            <th style="width: 15%">
                                 Անվանում/RU
                             </th>
                             <th>
@@ -51,6 +51,7 @@
                             <th style="width: 20%">
                                 #
                             </th>
+                                        <th style="width: 15%">#</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -58,7 +59,7 @@
                             @foreach($categorys as $category)
                         <tr>
                             <td>
-                                {{$category->id}}
+                                {{$category->is_sort}}
                             </td>
                             <td>
                                     {{$category->titleAM}}
@@ -76,22 +77,52 @@
 {{--                                @endforeach--}}
                             </td>
                             <td class="action-field"  >
-                                <form  action="{{route('category.edit',$category ->id)}}" method="get" class="delete-button-table" style="color: black;text-align: center">
-                                <button class="btn btn-info btn-sm">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Փոփոխել
-                                </button>
-                                </form>
-                                <form action="{{route('category.destroy',$category->id)}}} " method="post">
-                                    @method('DELETE')
-                                    @csrf
-                                <button class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Ջնջել
-                                </button>
-                                </form>
+
+
+                                    <form  action="{{route('category.edit',$category ->id)}}" method="get" class="delete-button-table" style="color: black;text-align: center">
+                                        <button class="btn btn-info btn-sm">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Փոփոխել
+                                        </button>
+                                    </form>
+                                    <form action="{{route('category.destroy',$category->id)}}} " method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Ջնջել
+                                        </button>
+                                    </form>
+                            </td>
+                            <td >
+                                    <div class="sort-order-container">
+
+                                        <form  class="sort-order-container-first" action="{{route('category.up',$category ->id)}}" method="get" >
+                                            @if($category->is_sort==(count($categorys)))
+                                            <button disabled="true"  class="down-category">
+                                                <i class="fas fa-arrow-alt-circle-down"></i>
+                                            </button>
+                                            @else
+                                                <button    class="down-category">
+                                                    <i class="fas fa-arrow-alt-circle-down"></i>
+                                                </button>
+                                            @endif
+                                        </form>
+                                        <form  action="{{route('category.down',$category ->id)}}"  method="get"  >
+                                            @if($category->is_sort==1)
+                                            <button disabled="true" >
+                                                <i class="fas fa-arrow-alt-circle-up"></i>
+                                            </button>
+                                            @else
+                                                <button   >
+                                                    <i class="fas fa-arrow-alt-circle-up"></i>
+                                                </button>
+                                            @endif
+                                        </form>
+                                    </div>
+
                             </td>
                         </tr>
                             @endforeach

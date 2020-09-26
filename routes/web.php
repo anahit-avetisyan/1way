@@ -134,6 +134,11 @@ Route::get("{curse}/admin.index", function() {
 Route::group(['middleware' => ['auth','admin'],'namespace' => 'adminka'],function(){
     Route::resource('0//slider','SliderController');
     Route::resource('0/category','CategoryController');
+    Route::get('category-down/{id}','CategoryController@down')->name('category.down');
+    Route::get('category-up/{id}','CategoryController@up')->name('category.up');
+    Route::resource('0/product','ProductController');
+    Route::get('/product/img-sort/{id}/{imgId}/{sort}','ProductController@sortOrderImg');
+    Route::get('/product/img-delete/{id}/{imgId}','ProductController@deleteImg');
     Route::resource('0/product','ProductController');
     Route::get('product-data/{id}','ProductController@productData');
    // Route::get('product-serch-with-brend/{id}','ProductController@searchWithBrand');
@@ -150,6 +155,8 @@ Route::group(['middleware' => ['auth','admin'],'namespace' => 'adminka'],functio
     Route::get('ajax/{category_id}','ProductController@ajax');
     Route::resource('0/indexText','IndexTextController');
     Route::resource('0/subcategory','SubCategoryController');
+    Route::get('subcategory-down/{id}','SubCategoryController@down')->name('sub-category.down');
+    Route::get('subcategory-up/{id}','SubCategoryController@up')->name('sub-category.up');
     Route::resource('0/promo','PromoController');
     Route::resource('0/govazd','GovazdController');
     Route::resource('0/brand','BrendController');
@@ -169,6 +176,8 @@ Route::group(['middleware' => ['auth','user'],'namespace' => 'admin'],function()
     Route::post("0/user-brand/1way", "UserProductController@storeUserBrand")->name("user-brand.store");
     Route::get('0/user-product/create/1way/{category_id}','UserProductController@ajax');
     Route::get('user-product-data/{id}','UserProductController@productData');
+    Route::get('/user-product-data/img-sort/{id}/{imgId}/{sort}','UserProductController@sortOrderImg');
+    Route::get('/user-product-data/img-delete/{id}/{imgId}','UserProductController@deleteImg');
     Route::get("0/user-product/create/1way", "UserProductController@create")->name("user-product-create");
     Route::get('z/{category_id}','UserProductController@ajax');
     Route::get("0/user_product/edit/{id}/z/", "UserProductController@edit")->name("user-product-edit");

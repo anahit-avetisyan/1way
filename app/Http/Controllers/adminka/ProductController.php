@@ -253,6 +253,55 @@ class ProductController extends Controller
         Top::destroy($id);
         return redirect()->route('product.indexTop');
     }
+
+
+    public function deleteImg($id,$imgId)
+    {
+        $product = Product::where('id',$id)->first();
+        $imgs =  json_decode($product['posters'], true);
+        foreach ($imgs as $key =>$img){
+
+            if($key == $imgId) {
+                array_splice($imgs, $key, 1);
+
+            }
+        }
+        $newImg = json_encode($imgs);
+        $product->update(['posters'=>$newImg]);
+        $product = Product::with('getSubCategory','category','brend')->where('id',$id)->first()->toArray();
+        return response()->json([
+            'img' => $product,
+            'success' => true
+
+        ], 200); // Status code here
+
+    }
+    public function sortOrderImg($id,$imgId,$sort)
+    {
+        $product = Product::where('id',$id)->first();
+        $imgs =  json_decode($product['posters'], true);
+        foreach ($imgs as $key =>$img){
+
+          if($key == $imgId) {
+              if($sort=='up'){
+                  $imgs[$key]=$imgs[$key+1];
+                  $imgs[$key+1] = $img;
+              }else{
+                  $imgs[$key]=$imgs[$key-1];
+                  $imgs[$key-1] = $img;
+              }
+          }
+        }
+        $newImg = json_encode($imgs);
+        $product->update(['posters'=>$newImg]);
+        $product = Product::with('getSubCategory','category','brend')->where('id',$id)->first()->toArray();
+        return response()->json([
+            'img' => $product,
+            'success' => true
+
+        ], 200); // Status code here
+
+    }
     public function ajax($id){
         $sub = SubCategory::where("category_id",$id)->pluck('titleAM','id');
         return json_encode($sub);

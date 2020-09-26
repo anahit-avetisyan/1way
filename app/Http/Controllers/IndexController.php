@@ -32,7 +32,7 @@ class IndexController extends Controller
 
         ];
 
-        $categories = Category::get();
+        $categories = Category::orderby('is_sort','ASC')->get();
         foreach ($categories as $category)
         {
             $categoryArr = [

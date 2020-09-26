@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".make-favorite").on('click', function () {
-        console.log($(this).data(),'kkkk')
+
          var id = $(this).data().id
         var user_id = $(this).data().user
         var curse = $(this).data().curse
@@ -9,7 +9,7 @@ $(document).ready(function(){
             type:"GET",
             dataType: "json",
             success:function (data) {
-                console.log(data,'kkkk')
+
                 if(data.success==true){
                     $('.flash-message-default').css('display',"flex")
                     $('.mssage-back').empty()
@@ -23,7 +23,7 @@ $(document).ready(function(){
             })
     })
     $(".save-data-cart").on('click', function () {
-        console.log($(this).data(),'kkkk')
+
         var id = $(this).data().id
         var user_id = $(this).data().user
         var curse = $(this).data().curse
@@ -32,7 +32,7 @@ $(document).ready(function(){
             type:"GET",
             dataType: "json",
             success:function (data) {
-                console.log(data,'kkkk')
+
                 if(data.success==true){
                     $('.flash-message-default').css('display',"flex")
                     $('.mssage-back').empty()
@@ -45,4 +45,5 @@ $(document).ready(function(){
             }
         })
     })
+
 })

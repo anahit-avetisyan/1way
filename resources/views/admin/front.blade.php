@@ -236,6 +236,7 @@
         $("#example1").DataTable({
             "responsive": true,
             "autoWidth": false,
+            "ordering": false,
         });
         $('#example2').DataTable({
             "paging": true,

@@ -19,7 +19,7 @@ class SubCategoryController extends Controller
     {
 
         $categories = Category::get("id");
-        $subcategorys = SubCategory::with('category')->get();
+        $subcategorys = SubCategory::with('category')->orderby('is_sort','ASC')->get();
 
         return view('admin.subcategory',compact('subcategorys',"categories"));
     }
@@ -49,6 +49,10 @@ class SubCategoryController extends Controller
             "titleEN"=>"required"
         ]);
         $subcategory = new SubCategory();
+        $subcategoriesOrder = SubCategory::orderby('is_sort','DESC')->first();
+
+
+        $subcategory->is_sort = $subcategoriesOrder->is_sort + 1;
         $subcategory->category_id=$request["category_id"];
         $subcategory->titleAM = $request["titleAM"];
         $subcategory->titleRU = $request["titleRU"];
@@ -69,6 +73,38 @@ class SubCategoryController extends Controller
         //
     }
 
+    public function up($id)
+    {
+
+        $category = SubCategory::where('id',$id)->first();
+        $categorySort = $category->is_sort ;
+        $categoryChanged = SubCategory::where('is_sort',$categorySort+1)->first();
+
+        SubCategory::where('id',$id)->update(['is_sort' => $categorySort +1]);
+        if(isset($categoryChanged)){
+            SubCategory::where('id',$categoryChanged->id)->update(['is_sort' => $categorySort]);
+        }
+
+        $categories = Category::get("id");
+        $subcategorys = SubCategory::with('category')->orderby('is_sort','ASC')->get();
+
+        return view('admin.subcategory',compact('subcategorys',"categories"));
+
+    }
+    public function down($id)
+    {
+        $category = SubCategory::where('id',$id)->first();
+
+        $categorySort = $category->is_sort ;
+        $categoryChanged = SubCategory::where('is_sort',$categorySort-1)->first();
+
+        SubCategory::where('id',$id)->update(['is_sort' => $categorySort -1]);
+        SubCategory::where('id',$categoryChanged->id)->update(['is_sort' => $categorySort]);
+        $categories = Category::get("id");
+        $subcategorys = SubCategory::with('category')->orderby('is_sort','ASC')->get();
+
+        return view('admin.subcategory',compact('subcategorys',"categories"));
+    }
     /**
      * Show the form for editing the specified resource.
      *

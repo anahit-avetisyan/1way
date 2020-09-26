@@ -63,18 +63,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Նկարագիր</label>
-                                    <input name="descriptionAM" value="{{$product->descriptionAM}}" type="text" class="form-control" id="product-description"
-                                           placeholder="Add product description...">
+                                    <textarea name="descriptionAM"   type="text" class="form-control" id="product-description"
+                                              placeholder="Add product description...">{{$product->descriptionAM}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Նկարագիր/RU</label>
-                                    <input name="descriptionRU" value="{{$product->descriptionRU}}" type="text" class="form-control" id="product-description"
-                                           placeholder="Add product description...">
+                                    <textarea name="descriptionRU"   type="text" class="form-control" id="product-description"
+                                              placeholder="Add product description...">{{$product->descriptionRU}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Նկարագիր/EN</label>
-                                    <input name="descriptionEN" value="{{$product->descriptionEN}}" type="text" class="form-control" id="product-description"
-                                           placeholder="Add product description...">
+                                    <textarea name="descriptionEN"   class="form-control" id="product-description"
+                                              placeholder="Add product description...">{{$product->descriptionEN}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Կոդ</label>
@@ -217,7 +217,6 @@
             type:"GET",
             dataType: "json",
             success:function (data) {
-                // console.log(data);
                 if(data.success){
 
 
@@ -230,7 +229,6 @@
                             type:"GET",
                             dataType: "json",
                             success:function (data) {
-                                // console.log(data);
                                 $('select[name="subcategory_id"]').empty();
                                 $.each(data,function (key,value) {
                                     $('select[name="subcategory_id"]').append
@@ -244,10 +242,18 @@
                     $(".img-container").empty()
                     if(imgs.length>0){
                         var img = ""
-                        imgs.map(function (img) {
+                        imgs.map(function (img,i) {
                             var imgSrc = "/images/"+img
-                            var imgTag =`<img src=${imgSrc}  width=\"60\" class=\"img-product\">`
-                            $(".img-container").append(imgTag)
+                            let div = $(`<div class="image-content-container"><img src="${imgSrc}" height="60" width="60"/> <div class="sort-order-image ${imgs.length==1 ? 'img-icon-display-none':''}">
+                                                                 <span data-id="${i}" data-sort="up" data-product="${id}"  class="${i!=imgs.length-1 ? 'sort-product-image':'disabled-icon'}">
+                                                                    <i class="fas fa-arrow-right"></i>
+                                                                </span>  <span data-id="${i}" data-sort="down" data-product="${id}" class=" ${i!=0 ? 'sort-product-image':'disabled-icon'}" >
+                                                                    <i class="fas fa-arrow-left"></i>
+                                                                </span></div>
+<div class="delete-img-container ${imgs.length==1 ? 'img-icon-display-none':''}" ><i data-id="${i}" data-sort="up" data-product="${id}"  class="fas fa-times close-icon-delete"></i></div>
+</div>`)
+
+                            $(".img-container").append(div)
                         })
 
                     }
@@ -261,7 +267,6 @@
                             var checkbox = $(".product-color")
 
                             for(var i = 0; i < checkbox.length; i++){
-                                console.log($(checkbox[i]).val());
                                 if(colors.includes($(checkbox[i]).val())){
                                     $(checkbox[i]).prop("checked", true);
                                 }
@@ -275,6 +280,80 @@
 
             }
         })
+
+            $(document).on('click','.close-icon-delete',function () {
+
+                let id = $(this).data().id
+                let productId = $(this).data().product
+
+                $.ajax({
+                    url:'/product/img-delete/' +productId  + '/' + id,
+                    type:"GET",
+                    dataType: "json",
+                    success:function (data) {
+
+                        if (data.success == true) {
+                            var imgs = JSON.parse(data.img.posters)
+                            $(".img-container").empty()
+                            if(imgs.length>0){
+                                var img = ""
+                                imgs.map(function (img,i) {
+                                    var imgSrc = "/images/"+img
+                                    let div = $(`<div class="image-content-container"><img src="${imgSrc}" height="60" width="60"/> <div class="sort-order-image ${imgs.length==1 ? 'img-icon-display-none':''} ">
+                                                                 <span data-id="${i}" data-sort="up" data-product="${data.img.id}"  class="${i!=imgs.length-1 ? 'sort-product-image':'disabled-icon'}">
+                                                                    <i class="fas fa-arrow-right"></i>
+                                                                </span>  <span data-id="${i}" data-sort="down" data-product="${data.img.id}" class=" ${i!=0 ? 'sort-product-image':'disabled-icon'}" >
+                                                                    <i class="fas fa-arrow-left"></i>
+                                                                </span></div>
+<div class="delete-img-container ${imgs.length==1 ? 'img-icon-display-none':''}" ><i data-id="${i}" data-sort="up" data-product="${data.img.id}"  class="fas fa-times close-icon-delete"></i></div>
+</div>`)
+
+                                    $(".img-container").append(div)
+                                })
+
+                            }
+                        }
+                    }
+                })
+            })
+        $(document).on('click','.sort-product-image',function () {
+
+            let id = $(this).data().id
+            let productId = $(this).data().product
+            let sort = $(this).data().sort
+            $.ajax({
+                url:'/product/img-sort/' +productId  + '/' + id+'/' + sort,
+                type:"GET",
+                dataType: "json",
+                success:function (data) {
+
+                    if (data.success == true) {
+                        var imgs = JSON.parse(data.img.posters)
+                        $(".img-container").empty()
+                        if(imgs.length>0){
+                            var img = ""
+                            imgs.map(function (img,i) {
+                                var imgSrc = "/images/"+img
+                                let div = $(`<div class="image-content-container"><img src="${imgSrc}" height="60" width="60"/> <div class="sort-order-image ${imgs.length==1 ? 'img-icon-display-none':''}">
+                                                                 <span data-id="${i}" data-sort="up" data-product="${data.img.id}"  class="${i!=imgs.length-1 ? 'sort-product-image':'disabled-icon'}">
+                                                                    <i class="fas fa-arrow-right"></i>
+                                                                </span>  <span data-id="${i}" data-sort="down" data-product="${data.img.id}" class=" ${i!=0 ? 'sort-product-image':'disabled-icon'}" >
+                                                                    <i class="fas fa-arrow-left"></i>
+                                                                </span></div>
+<div class="delete-img-container ${imgs.length==1 ? 'img-icon-display-none':''}" ><i data-id="${i}" data-sort="up" data-product="${data.img.id}"  class="fas fa-times close-icon-delete"></i></div>
+</div>`)
+
+                                $(".img-container").append(div)
+                            })
+
+                        }
+                    }
+                }
+        })
+    })
+
+
+
         $('.product-category').on("change",function () {
             var category_id = $(this).val();
             if(category_id){
@@ -283,7 +362,6 @@
                     type:"GET",
                     dataType: "json",
                     success:function (data) {
-                        // console.log(data);
                         $('select[name="subcategory_id"]').empty();
                         $.each(data,function (key,value) {
                             $('select[name="subcategory_id"]').append

@@ -153,6 +153,7 @@ let slider = $("#lightSlider").lightSlider({
     thumbItem: 4,
     enableDrag: true,
     controls: false,
+    // thumbMargin: 50,
 });
 
 const right = document.querySelector(".right");

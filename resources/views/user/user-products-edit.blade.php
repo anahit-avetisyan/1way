@@ -314,10 +314,18 @@
                     $(".img-container").empty()
                     if (imgs.length > 0) {
                         var img = ""
-                        imgs.map(function (img) {
+                        imgs.map(function (img,i) {
                             var imgSrc = "/images/" + img
-                            var imgTag = `<img src=${imgSrc}  width=\"60\" class=\"img-product\">`
-                            $(".img-container").append(imgTag)
+                            let div = $(`<div class="image-content-container"><img src="${imgSrc}" height="60" width="60"/> <div class="sort-order-image ${imgs.length==1 ? 'img-icon-display-none':''}">
+                                                                 <span data-id="${i}" data-sort="up" data-product="${id}"  class="${i!=imgs.length-1 ? 'sort-product-image':'disabled-icon'}">
+                                                                    <i class="fas fa-arrow-right"></i>
+                                                                </span>  <span data-id="${i}" data-sort="down" data-product="${id}" class=" ${i!=0 ? 'sort-product-image':'disabled-icon'}" >
+                                                                    <i class="fas fa-arrow-left"></i>
+                                                                </span></div>
+<div class="delete-img-container ${imgs.length==1 ? 'img-icon-display-none':''}" ><i data-id="${i}" data-sort="up" data-product="${id}"  class="fas fa-times close-icon-delete"></i></div>
+</div>`)
+
+                            $(".img-container").append(div)
                         })
 
                     }
@@ -346,6 +354,79 @@
             }
         })
     })
+    $(document).on('click','.close-icon-delete',function () {
+
+        let id = $(this).data().id
+        let productId = $(this).data().product
+
+        $.ajax({
+            url:'/user-product-data/img-delete/' +productId  + '/' + id,
+            type:"GET",
+            dataType: "json",
+            success:function (data) {
+
+                if (data.success == true) {
+                    var imgs = JSON.parse(data.img.posters)
+                    $(".img-container").empty()
+                    if(imgs.length>0){
+
+                        imgs.map(function (img,i) {
+                            var imgSrc = "/images/"+img
+                            let div = $(`<div class="image-content-container"><img src="${imgSrc}" height="60" width="60"/> <div class="sort-order-image ${imgs.length==1 ? 'img-icon-display-none':''} ">
+                                                                 <span data-id="${i}" data-sort="up" data-product="${data.img.id}"  class="${i!=imgs.length-1 ? 'sort-product-image':'disabled-icon'}">
+                                                                    <i class="fas fa-arrow-right"></i>
+                                                                </span>  <span data-id="${i}" data-sort="down" data-product="${data.img.id}" class=" ${i!=0 ? 'sort-product-image':'disabled-icon'}" >
+                                                                    <i class="fas fa-arrow-left"></i>
+                                                                </span></div>
+<div class="delete-img-container ${imgs.length==1 ? 'img-icon-display-none':''}" ><i data-id="${i}" data-sort="up" data-product="${data.img.id}"  class="fas fa-times close-icon-delete"></i></div>
+</div>`)
+
+                            $(".img-container").append(div)
+                        })
+
+                    }
+                }
+            }
+        })
+    })
+    $(document).on('click','.sort-product-image',function () {
+
+        let id = $(this).data().id
+        let productId = $(this).data().product
+        let sort = $(this).data().sort
+        $.ajax({
+            url:'/user-product-data/img-sort/' +productId  + '/' + id+'/' + sort,
+            type:"GET",
+            dataType: "json",
+            success:function (data) {
+
+                if (data.success == true) {
+                    var imgs = JSON.parse(data.img.posters)
+                    $(".img-container").empty()
+                    if(imgs.length>0){
+                        var img = ""
+                        imgs.map(function (img,i) {
+                            var imgSrc = "/images/"+img
+                            let div = $(`<div class="image-content-container"><img src="${imgSrc}" height="60" width="60"/> <div class="sort-order-image ${imgs.length==1 ? 'img-icon-display-none':''}">
+                                                                 <span data-id="${i}" data-sort="up" data-product="${data.img.id}"  class="${i!=imgs.length-1 ? 'sort-product-image':'disabled-icon'}">
+                                                                    <i class="fas fa-arrow-right"></i>
+                                                                </span>  <span data-id="${i}" data-sort="down" data-product="${data.img.id}" class=" ${i!=0 ? 'sort-product-image':'disabled-icon'}" >
+                                                                    <i class="fas fa-arrow-left"></i>
+                                                                </span></div>
+<div class="delete-img-container ${imgs.length==1 ? 'img-icon-display-none':''}" ><i data-id="${i}" data-sort="up" data-product="${data.img.id}"  class="fas fa-times close-icon-delete"></i></div>
+</div>`)
+
+                            $(".img-container").append(div)
+                        })
+
+                    }
+                }
+            }
+        })
+    })
+
+
+
     $(document).ready(function () {
         $('select[name="category_id"]').on("change",function () {
             var category_id = $(this).val();

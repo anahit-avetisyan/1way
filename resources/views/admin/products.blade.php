@@ -254,18 +254,18 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputDescription">Նկարագիր/RU</label>
-                                                        <input name="descriptionRU" disabled type="text" class="form-control product-description-ru" id="product-description "
-                                                               placeholder="Add product description...">
+                                                        <textarea name="descriptionRU" disabled type="text" class="form-control product-description-ru" id="product-description "
+                                                                  placeholder="Add product description..."></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputDescription">Նկարագիր/EN</label>
-                                                        <input name="descriptionEN" disabled type="text" class="form-control product-description-en" id="product-description "
-                                                               placeholder="Add product description...">
+                                                        <textarea name="descriptionEN" disabled type="text" class="form-control product-description-en" id="product-description "
+                                                                  placeholder="Add product description..."></textarea>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputDescription">Կոդ</label>
-                                                        <input name="code"  disabled type="text" class="form-control product-code" id="product-description"
-                                                               placeholder="Add product description...">
+                                                        <textarea name="code"  disabled type="text" class="form-control product-code" id="product-description"
+                                                                  placeholder="Add product description..."></textarea>
                                                     </div>
                                                     <div class="form-group" style="border-bottom:1px solid black">
                                                         <br>

@@ -134,7 +134,7 @@
                                 <span class="sliderArrow left">&#x2039;</span>
                                 <span class="sliderArrow right">&#x203A;</span>
                             </div>
-                            <div class="demo">
+                            <div class="demo single-slider-container">
                                 <ul id="lightSlider">
                                     @php $img = json_decode($product->posters);
                                     @endphp

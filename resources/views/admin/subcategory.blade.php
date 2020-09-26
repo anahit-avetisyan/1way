@@ -53,6 +53,7 @@
                                         <th style="width: 20%">
                                             #
                                         </th>
+                                        <th style="width: 15%">#</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -62,7 +63,7 @@
 
                                             <tr>
                                                 <td>
-                                                    {{$category->id}}
+                                                    {{$category->is_sort}}
                                                 </td>
                                                 <td>
                                                         {{$category->titleAM}}
@@ -99,6 +100,34 @@
                                                             Ջնջել
                                                         </button>
                                                     </form>
+                                                </td>
+                                                <td >
+                                                    <div class="sort-order-container">
+
+                                                        <form  class="sort-order-container-first" action="{{route('sub-category.up',$category ->id)}}" method="get" >
+                                                            @if($category->is_sort==(count($subcategorys)))
+                                                                <button disabled="true"  class="down-category">
+                                                                    <i class="fas fa-arrow-alt-circle-down"></i>
+                                                                </button>
+                                                            @else
+                                                                <button    class="down-category">
+                                                                    <i class="fas fa-arrow-alt-circle-down"></i>
+                                                                </button>
+                                                            @endif
+                                                        </form>
+                                                        <form  action="{{route('sub-category.down',$category ->id)}}"  method="get"  >
+                                                            @if($category->is_sort==1)
+                                                                <button disabled="true" >
+                                                                    <i class="fas fa-arrow-alt-circle-up"></i>
+                                                                </button>
+                                                            @else
+                                                                <button   >
+                                                                    <i class="fas fa-arrow-alt-circle-up"></i>
+                                                                </button>
+                                                            @endif
+                                                        </form>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         @endforeach

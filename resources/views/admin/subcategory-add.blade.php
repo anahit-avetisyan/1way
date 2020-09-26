@@ -37,15 +37,15 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Անվանում</label>
+                                    <label for="inputName">Անվանում/AM</label>
                                     <input name="titleAM" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">Անվանում</label>
+                                    <label for="inputName">Անվանում/RU</label>
                                     <input name="titleRU" type="text" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">Անվանում</label>
+                                    <label for="inputName">Անվանում/EN</label>
                                     <input name="titleEN" type="text" id="inputName" class="form-control">
                                 </div>
 

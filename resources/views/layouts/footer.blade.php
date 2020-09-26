@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/lightslider.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/fonts.css') }}">
+    <link rel="stylesheet" href="{{URL::asset("dist/css/custom.css")}}">
     <meta name="title" content="1way.am — Հայաստանում №1 առցանց առևտրի հարթակը.">
     <meta name="description" content="1way.am համարվում է Հայաստանում №1 առցանց առևտրի հարթակը:1way.am-ում դուք կգտնեք ցանկացած տեսակի ապրանք մատչելի գներով և բարձր որակով">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -260,7 +261,8 @@
                                     @endphp
                                     <div style="display: flex;align-items: center;width: 95%;justify-content: space-between;">
                                         <div>
-                                            <img  src="{{asset('images/'.$img[1])}}" style="height: 22px;width:22px;object-fit:contain">
+
+                                            <img  src="{{asset('images/'.$img[0])}}" style="height: 22px;width:22px;object-fit:contain">
                                             {{mb_substr($categ['category']->titleAM,0,12).".."}}
                                         </div>
                                         <div>
@@ -280,7 +282,7 @@
                             </div>
                             <div style="height: 100%;width: 10%;position: absolute;top: 0;left: -60px;
 "></div>
-                            <div style="height:550px;width:100%;"></div>
+{{--                            <div style="height:550px;width:100%;"></div>--}}
                         </div>
                     </div>
                 @endforeach
