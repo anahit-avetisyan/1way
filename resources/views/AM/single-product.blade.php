@@ -333,7 +333,7 @@
 
                             </div>
                         <div style="margin-top: 5%; ">
-                            <p>Ապրանքի նկարագիր</p>
+                            <p><b>Ապրանքի նկարագիր</b></p>
                             <span style="font-family: Arial-Arm-Regular" name="descriptionAM"> {{\Illuminate\Support\Str::limit($product->descriptionAM,200)}} </span>
                         </div>
                     </div>
@@ -530,8 +530,9 @@
 
 
         var rate = "<?php echo $rate; ?>";
+
         $("#rateYo").rateYo({
-            rating: rate
+            rating: rate=='' ? 0:rate
         });
 
             $("#rateYo").rateYo()
@@ -545,7 +546,15 @@
                         success: function (data) {
 
                             if (data.success == true) {
-
+                                $("#rateYo").rateYo({
+                                    rating: data.rate
+                                });
+                                $('.flash-message-default').css('display',"flex")
+                                $('.mssage-back').empty()
+                                $('.mssage-back').append('Ձեր գնահատականն ավելացված է')
+                                setTimeout(function(){
+                                    $('.flash-message-default').hide();// or fade, css display however you'd like.
+                                }, 1000);
                             }
                         }
                     })

@@ -102,3 +102,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+.flash-message-default {
+    display: none;
+}
+

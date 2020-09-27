@@ -282,8 +282,29 @@ class ProductController extends Controller
 
     public function ratingData()
     {
-        $products = ProductRating::with('product')->groupBy('product_id')
-            ->get();
+        $products = ProductRating::with('product')->get()->toArray();
+        $productRatings = [];
+         foreach ($products as $product){
+             if(isset($productRatings[$product['product_id']])){
+                 $productRatings[$product['product_id']]=[
+                     'count'=>$productRatings[$product['product_id']]['count'] + 1,
+                     'rate'=>$productRatings[$product['product_id']]['rate']+ $product['rate'],
+                     'product'=>$product['product']
+                 ];
+             }else{
+                 $productRatings[$product['product_id']]=[
+                    'count'=>1,
+                    'rate'=> $product['rate'],
+                     'product'=>$product['product']
+                 ];
+             }
+         }
+
+         foreach ($productRatings as &$productRating){
+             $productRating['avg'] = $productRating['rate'] / $productRating['count'];
+         }
+
+        return view('admin.rate',compact( 'productRatings'));
     }
     public function sortOrderImg($id,$imgId,$sort)
     {

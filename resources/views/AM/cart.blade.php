@@ -110,6 +110,7 @@
 @endsection
 @section("content")
             <div class="col-xl-6 col-lg-8 col-12 ">
+                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
 
                 <div style="border-top: 1px solid #EDF2ED;" class="bigdiv">
 
@@ -160,7 +161,7 @@
                 <div class="row justify-content-between mt-2 ">
                     <div class="col-md-6 col-8 ">
                         <div class="row ">
-                            <input type="text " style="margin-right: 8px;height: 29px;margin-right: 5px; " class="col-8 " placeholder="Զեղչի կտրոն ">
+                            <input type="text " style="margin-right: 8px;height: 29px;margin-right: 5px; " class="col-8 promo-code "   placeholder="Զեղչի կտրոն ">
                             <span style="border: 1px solid black;"><i style="padding: 5px;" class="fa fa-check" aria-hidden="true"></i></span>
                         </div>
                     </div>
@@ -192,21 +193,30 @@
                     </div>
                 </div>
                 </div>
+        <div class="flash-message-default error-success-toast" style="max-height: 100px;margin-left: 4%">
+            <div    style="background-color: #0d0735;color: #98f2fe;position: absolute;margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;width:50%;height: 43px;z-index: 1;display: flex;margin-top: 5px;align-items: center;justify-content: center;opacity: 1;">
+                <span class="mssage-back" style="white-space: normal;position: absolute;padding-top: 2px;"></span>
+                {{--                                            <a href="#" class="close" data-dismiss="alert" aria-label="close" style="color: #98f2fe;">&times;</a>--}}
+            </div>
 
+        </div>
             <div class="col-xl-3 col-md-5 col-10">
 
                 <div class="card mb-3 mb-xl-0 ">
                         <div class="card-body ">
                             <b> <p class="card-title ">Առաքման տվյալներ</p></b>
-                            <input type="text" name="name" class="name " placeholder="Անուն ">
+                            <input type="text" name="name" class="name nameOfuser " placeholder="Անուն ">
                             <span class="nameError " style="color: red; "></span>
-                            <input type="text" name="surname" class="mt-2 surname " placeholder="Ազգանուն ">
+                            <input type="text" name="surname" class="mt-2 surname surnameOfuser " placeholder="Ազգանուն ">
                             <span class="surnameError " style="color: red; "></span>
                             <input type="text" name="phone" class="mt-2 num phone-number" value="+374" placeholder="Հեռախոսահամար ">
                             <span class="numError " style="color: red; "></span>
-                            <input type="text" name="city" class=" mt-2 city " placeholder="Քաղաք ">
+                            <input type="text" name="city" class=" mt-2 city userCity " placeholder="Քաղաք ">
                             <span class="cityError " style=" color: red; "></span>
-                            <input type="text" name="address" class="mt-2 address " placeholder=" Հասցե ">
+                            <input type="text" name="address" class="mt-2 address userAddress " placeholder=" Հասցե ">
                             <span class="addressError " style="color: red; "></span>
                         </div>
                         <div style=" padding: 0px 22px; ">
@@ -220,6 +230,7 @@
 
                         </div>
                     <div class="cash-form-submit"> <button style="width:'fit-content';color: white;background-color: blue;border: none;outline: none;float:right;padding: 8px 14px; ">submit</button></div>
+
                     <form class="ameria-form-submit" action="https://money.idram.am/payment.aspx" method="POST">
                         <input type="hidden" name="EDP_LANGUAGE" value="AM">
                         <input type="hidden" name="EDP_REC_ACCOUNT" value="110000439">
@@ -243,6 +254,7 @@
     </div>
 @endsection
 @section("script")
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
 
@@ -287,11 +299,67 @@
                 }
 
             })
+            $('.cash-form-submit').on('click',function () {
+                console.log($('.checkout-input:checked').val())
+                var type = $('.checkout-input:checked').val()
+                var name = $('.nameOfuser').val()
+                var surName = $('.surnameOfuser').val()
+                var phoneNumber = $('.phone-number').val()
+                var userCity = $('.userCity').val()
+                var userAddress = $('.userAddress').val()
+                var promoCode = $('.promo-code').val()
+                var quantity = "<?php echo $quantity; ?>";
+                var curse =  "<?php echo $curse; ?>";
+                var color =  "<?php echo $color; ?>";
+                var size = "<?php echo $size; ?>";
+                var id = "<?php echo $check->id; ?>";
+               var body = {
+                   color:color,
+                   quantity:quantity,
+                   name:name,
+                   surname:surName,
+                   phone:phoneNumber,
+                   size:size,
+                   address:userAddress,
+                   city:userCity,
+                   payment:type,
+                   promoCode:promoCode,
+                   "_token": $('#token').val()
+               }
+                $.ajax({
+                    url: '/finish/' + id ,
+
+                    type: "post",
+                    dataType: "json",
+                    data:body,
+                    success: function (data) {
+
+                        if (data.success == true) {
+                            $('.flash-message-default').css('display',"flex")
+                            $('.mssage-back').empty()
+                            $('.mssage-back').append('Շնորհակալություն։Կատարված է')
+                            setTimeout(function(){
+                                $('.flash-message-default').hide();// or fade, css display however you'd like.
+                            }, 2000);
+                            setTimeout(function(){
+                                window.location.href = '/'
+                            }, 2000);
+                        }
+                        if (data.success == false) {
+                            window.location.href = '/0/login/login'
+                        }
+                    }
+                })
+
+
+
+            })
 
         })
 
     </script>
     <script src="{{URL::asset("js/cart.js") }}"></script>
+    <script src="{{URL::asset("js/custom.js") }}"></script>
 @endsection
 
 
